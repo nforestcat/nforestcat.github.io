@@ -46,8 +46,8 @@
 
   <meta itemprop="name" content="Posts">
   <meta itemprop="description" content="공부한 것을 차곡차곡 정리하는 개인 기록 공간입니다.">
-  <meta itemprop="datePublished" content="2026-05-28T10:34:00+09:00">
-  <meta itemprop="dateModified" content="2026-05-28T10:34:00+09:00">
+  <meta itemprop="datePublished" content="2026-05-28T14:41:00+09:00">
+  <meta itemprop="dateModified" content="2026-05-28T14:41:00+09:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Posts">
   <meta name="twitter:description" content="공부한 것을 차곡차곡 정리하는 개인 기록 공간입니다.">
@@ -109,6 +109,160 @@
   <article class="pa3 pa4-ns nested-copy-line-height">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray"></section>
     <section class="flex-ns mt5 flex-wrap justify-around">
+      
+        <div class="w-100 w-30-l mb4 relative bg-white">
+          <div class="w-100 mb4 nested-copy-line-height relative bg-white">
+  <div class="mb3 pa4 gray overflow-hidden bg-white">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/linux_tutorial_01/" class="link black dim">
+        서비스 기획, API, 백엔드, DB 기초 정리
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="현재-위치-확인">현재 위치 확인</h1>
+<h2 id="현재-디렉터리-확인">현재 디렉터리 확인</h2>
+<ul>
+<li>현재 내가 어느 위치에 있는지 절대 경로로 출력</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ pwd
+</span></span><span style="display:flex;"><span>/c/Users/중진공5/Desktop/test
+</span></span></code></pre></div><h2 id="바탕화면으로-이동">바탕화면으로 이동</h2>
+<ul>
+<li><code>cd</code> 명령어로 원하는 디렉터리로 이동</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd ~/Desktop
+</span></span></code></pre></div><h2 id="현재-위치의-파일-폴더-목록-보기">현재 위치의 파일 폴더 목록 보기</h2>
+<ul>
+<li>현재 디렉터리 안의 파일과 폴더를 나열</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls
+</span></span></code></pre></div><ul>
+<li>숨김 파일 포함, 상세 정보까지 보기</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls -al
+</span></span></code></pre></div><hr>
+<h1 id="2-폴더디렉터리-만들기-및-이동">2. 폴더(디렉터리) 만들기 및 이동</h1>
+<h2 id="test-폴더-안에서-새로운-폴더-만들기">test 폴더 안에서 새로운 폴더 만들기</h2>
+<ul>
+<li><code>mkdir</code>로 새로운 폴더 생성</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir linux_practice
+</span></span></code></pre></div><ul>
+<li>중첩 폴더를 한번에 만들기 (&rsquo;-p&rsquo; 옵션)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir -p linux_practice/src/utils
+</span></span></code></pre></div><h2 id="만든-폴더로-이동">만든 폴더로 이동</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd linux_practice
+</span></span></code></pre></div><h2 id="상위-폴더로-이동하기">상위 폴더로 이동하기</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd ..
+</span></span></code></pre></div><hr>
+<h1 id="3-파일-만들기-및-내용-확인">3. 파일 만들기 및 내용 확인</h1>
+<h2 id="빈-파일-만들기-touch">빈 파일 만들기 (touch)</h2>
+<ul>
+<li><code>touch</code>로 빈 파일 생성</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd ~개인경로/linux_practice
+</span></span><span style="display:flex;"><span>$ touch hello.txt
+</span></span></code></pre></div><ul>
+<li><code>&gt;</code>는 덮어쓰기, <code>&gt;&gt;</code>는 내용 추가
+<ul>
+<li>가급적이면 <code>&gt;</code>는 사용 금지</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ echo <span style="color:#e6db74">&#34;Hello, Linux!&#34;</span> &gt; hello.txt
+</span></span><span style="display:flex;"><span>$ echo <span style="color:#e6db74">&#34;두 번째 줄 추가&#34;</span> &gt;&gt; hello.txt
+</span></span></code></pre></div><h2 id="파일-내용-확인">파일 내용 확인</h2>
+<ul>
+<li>파일 전체 내용을 터미널에 출력</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat hello.txt
+</span></span></code></pre></div><h2 id="vi-편집기-익히기">vi 편집기 익히기</h2>
+<ul>
+<li>기본문법</li>
+<li>vi 편집기 : 개발자 필수 / 분석가 옵션 / 기획자, 공부하지 마세요!
+<ul>
+<li>개발자의 경우 : 앞으로 markdown 작업할 때, vi 편집기로 하는 것 추천</li>
+</ul>
+</li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>키</th>
+          <th>동작</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>i</code></td>
+          <td>삽입 모드 진입 (현재 커서 앞)</td>
+      </tr>
+      <tr>
+          <td><code>ESC</code></td>
+          <td>일반 모드로 복귀</td>
+      </tr>
+      <tr>
+          <td><code>:w</code></td>
+          <td>저장</td>
+      </tr>
+      <tr>
+          <td><code>:q</code></td>
+          <td>종료</td>
+      </tr>
+      <tr>
+          <td><code>:wq</code></td>
+          <td>저장 후 종료</td>
+      </tr>
+      <tr>
+          <td><code>:q!</code></td>
+          <td>저장 없이 강제 종료</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h1 id="4-파일-폴더-복사-이동-삭제">4. 파일 폴더 복사, 이동, 삭제</h1>
+<h2 id="파일-복사-cp">파일 복사 (cp)</h2>
+<ul>
+<li><code>cp [원본] [복사본]</code> 형식</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cp hello.txt hello_backup.txt
+</span></span></code></pre></div><ul>
+<li>폴더 전체 복사 (<code>-r</code> 옵션)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cp -r linux_practice/ linux_practice_backup/
+</span></span></code></pre></div><h2 id="파일-폴더-이동--이름-변경-mv">파일 폴더 이동 / 이름 변경 (mv)</h2>
+<ul>
+<li>같은 위치에서 이름만 바꾸면 이름 변경</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mv hello_backup.txt hello_copy.txt
+</span></span></code></pre></div><ul>
+<li>archive 폴더 생성</li>
+<li>hello_copy.txt 파일을 archive 이동 (mv)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir archive
+</span></span><span style="display:flex;"><span>$ mv hello_copy.txt archive/
+</span></span></code></pre></div><h2 id="파일-삭제-rm">파일 삭제 (rm)</h2>
+<ul>
+<li>파일 삭제</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rm 파일명
+</span></span></code></pre></div><ul>
+<li>폴더 전체 삭제 (<code>-r</code> 옵션)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rm -r archive
+</span></span></code></pre></div><ul>
+<li>강제 삭제 (<code>-f</code> 옵션)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rm -rf 디렉터리/파일
+</span></span></code></pre></div>
+    </div>
+    <a href="/posts/linux_tutorial_01/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
       
         <div class="w-100 w-30-l mb4 relative bg-white">
           <div class="w-100 mb4 nested-copy-line-height relative bg-white">

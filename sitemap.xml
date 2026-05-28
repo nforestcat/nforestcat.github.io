@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://nforestcat.github.io/</loc>
+    <lastmod>2026-05-28T14:41:00+09:00</lastmod>
+  </url><url>
+    <loc>https://nforestcat.github.io/posts/</loc>
+    <lastmod>2026-05-28T14:41:00+09:00</lastmod>
+  </url><url>
+    <loc>https://nforestcat.github.io/posts/linux_tutorial_01/</loc>
+    <lastmod>2026-05-28T14:41:00+09:00</lastmod>
+  </url><url>
     <loc>https://nforestcat.github.io/categories/</loc>
     <lastmod>2026-05-28T10:34:00+09:00</lastmod>
   </url><url>
@@ -9,12 +18,6 @@
     <lastmod>2026-05-28T10:34:00+09:00</lastmod>
   </url><url>
     <loc>https://nforestcat.github.io/categories/linux/</loc>
-    <lastmod>2026-05-28T10:34:00+09:00</lastmod>
-  </url><url>
-    <loc>https://nforestcat.github.io/</loc>
-    <lastmod>2026-05-28T10:34:00+09:00</lastmod>
-  </url><url>
-    <loc>https://nforestcat.github.io/posts/</loc>
     <lastmod>2026-05-28T10:34:00+09:00</lastmod>
   </url><url>
     <loc>https://nforestcat.github.io/categories/study/</loc>

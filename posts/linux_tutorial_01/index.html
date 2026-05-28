@@ -4,9 +4,145 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>nforest notes</title>
+    <title>서비스 기획, API, 백엔드, DB 기초 정리 | nforest notes</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="공부한 것을 차곡차곡 정리하는 개인 기록 공간입니다.">
+    <meta name="description" content="현재 위치 확인
+현재 디렉터리 확인
+
+현재 내가 어느 위치에 있는지 절대 경로로 출력
+
+$ pwd
+/c/Users/중진공5/Desktop/test
+바탕화면으로 이동
+
+cd 명령어로 원하는 디렉터리로 이동
+
+$ cd ~/Desktop
+현재 위치의 파일 폴더 목록 보기
+
+현재 디렉터리 안의 파일과 폴더를 나열
+
+$ ls
+
+숨김 파일 포함, 상세 정보까지 보기
+
+$ ls -al
+
+2. 폴더(디렉터리) 만들기 및 이동
+test 폴더 안에서 새로운 폴더 만들기
+
+mkdir로 새로운 폴더 생성
+
+$ mkdir linux_practice
+
+중첩 폴더를 한번에 만들기 (&rsquo;-p&rsquo; 옵션)
+
+$ mkdir -p linux_practice/src/utils
+만든 폴더로 이동
+$ cd linux_practice
+상위 폴더로 이동하기
+$ cd ..
+
+3. 파일 만들기 및 내용 확인
+빈 파일 만들기 (touch)
+
+touch로 빈 파일 생성
+
+$ cd ~개인경로/linux_practice
+$ touch hello.txt
+
+&gt;는 덮어쓰기, &gt;&gt;는 내용 추가
+
+가급적이면 &gt;는 사용 금지
+
+
+
+$ echo &#34;Hello, Linux!&#34; &gt; hello.txt
+$ echo &#34;두 번째 줄 추가&#34; &gt;&gt; hello.txt
+파일 내용 확인
+
+파일 전체 내용을 터미널에 출력
+
+$ cat hello.txt
+vi 편집기 익히기
+
+기본문법
+vi 편집기 : 개발자 필수 / 분석가 옵션 / 기획자, 공부하지 마세요!
+
+개발자의 경우 : 앞으로 markdown 작업할 때, vi 편집기로 하는 것 추천
+
+
+
+
+  
+      
+          키
+          동작
+      
+  
+  
+      
+          i
+          삽입 모드 진입 (현재 커서 앞)
+      
+      
+          ESC
+          일반 모드로 복귀
+      
+      
+          :w
+          저장
+      
+      
+          :q
+          종료
+      
+      
+          :wq
+          저장 후 종료
+      
+      
+          :q!
+          저장 없이 강제 종료
+      
+  
+
+
+4. 파일 폴더 복사, 이동, 삭제
+파일 복사 (cp)
+
+cp [원본] [복사본] 형식
+
+$ cp hello.txt hello_backup.txt
+
+폴더 전체 복사 (-r 옵션)
+
+$ cp -r linux_practice/ linux_practice_backup/
+파일 폴더 이동 / 이름 변경 (mv)
+
+같은 위치에서 이름만 바꾸면 이름 변경
+
+$ mv hello_backup.txt hello_copy.txt
+
+archive 폴더 생성
+hello_copy.txt 파일을 archive 이동 (mv)
+
+$ mkdir archive
+$ mv hello_copy.txt archive/
+파일 삭제 (rm)
+
+파일 삭제
+
+$ rm 파일명
+
+폴더 전체 삭제 (-r 옵션)
+
+$ rm -r archive
+
+강제 삭제 (-f 옵션)
+
+$ rm -rf 디렉터리/파일
+">
     <meta name="generator" content="Hugo 0.161.1">
     
     
@@ -25,32 +161,31 @@
     
 
     
-    
-      <link href="/index.xml" rel="alternate" type="application/rss+xml" title="nforest notes" />
-      <link href="/index.xml" rel="feed" type="application/rss+xml" title="nforest notes" />
-      
-    
 
     
-      <link rel="canonical" href="https://nforestcat.github.io/">
+      <link rel="canonical" href="https://nforestcat.github.io/posts/linux_tutorial_01/">
     
 
     
     
-    <meta property="og:url" content="https://nforestcat.github.io/">
+    <meta property="og:url" content="https://nforestcat.github.io/posts/linux_tutorial_01/">
   <meta property="og:site_name" content="nforest notes">
-  <meta property="og:title" content="nforest notes">
-  <meta property="og:description" content="공부한 것을 차곡차곡 정리하는 개인 기록 공간입니다.">
+  <meta property="og:title" content="서비스 기획, API, 백엔드, DB 기초 정리">
+  <meta property="og:description" content="현재 위치 확인 현재 디렉터리 확인 현재 내가 어느 위치에 있는지 절대 경로로 출력 $ pwd /c/Users/중진공5/Desktop/test 바탕화면으로 이동 cd 명령어로 원하는 디렉터리로 이동 $ cd ~/Desktop 현재 위치의 파일 폴더 목록 보기 현재 디렉터리 안의 파일과 폴더를 나열 $ ls 숨김 파일 포함, 상세 정보까지 보기 $ ls -al 2. 폴더(디렉터리) 만들기 및 이동 test 폴더 안에서 새로운 폴더 만들기 mkdir로 새로운 폴더 생성 $ mkdir linux_practice 중첩 폴더를 한번에 만들기 (’-p’ 옵션) $ mkdir -p linux_practice/src/utils 만든 폴더로 이동 $ cd linux_practice 상위 폴더로 이동하기 $ cd .. 3. 파일 만들기 및 내용 확인 빈 파일 만들기 (touch) touch로 빈 파일 생성 $ cd ~개인경로/linux_practice $ touch hello.txt &gt;는 덮어쓰기, &gt;&gt;는 내용 추가 가급적이면 &gt;는 사용 금지 $ echo &#34;Hello, Linux!&#34; &gt; hello.txt $ echo &#34;두 번째 줄 추가&#34; &gt;&gt; hello.txt 파일 내용 확인 파일 전체 내용을 터미널에 출력 $ cat hello.txt vi 편집기 익히기 기본문법 vi 편집기 : 개발자 필수 / 분석가 옵션 / 기획자, 공부하지 마세요! 개발자의 경우 : 앞으로 markdown 작업할 때, vi 편집기로 하는 것 추천 키 동작 i 삽입 모드 진입 (현재 커서 앞) ESC 일반 모드로 복귀 :w 저장 :q 종료 :wq 저장 후 종료 :q! 저장 없이 강제 종료 4. 파일 폴더 복사, 이동, 삭제 파일 복사 (cp) cp [원본] [복사본] 형식 $ cp hello.txt hello_backup.txt 폴더 전체 복사 (-r 옵션) $ cp -r linux_practice/ linux_practice_backup/ 파일 폴더 이동 / 이름 변경 (mv) 같은 위치에서 이름만 바꾸면 이름 변경 $ mv hello_backup.txt hello_copy.txt archive 폴더 생성 hello_copy.txt 파일을 archive 이동 (mv) $ mkdir archive $ mv hello_copy.txt archive/ 파일 삭제 (rm) 파일 삭제 $ rm 파일명 폴더 전체 삭제 (-r 옵션) $ rm -r archive 강제 삭제 (-f 옵션) $ rm -rf 디렉터리/파일">
   <meta property="og:locale" content="ko_kr">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-28T14:41:00+09:00">
+    <meta property="article:modified_time" content="2026-05-28T14:41:00+09:00">
 
-  <meta itemprop="name" content="nforest notes">
-  <meta itemprop="description" content="공부한 것을 차곡차곡 정리하는 개인 기록 공간입니다.">
+  <meta itemprop="name" content="서비스 기획, API, 백엔드, DB 기초 정리">
+  <meta itemprop="description" content="현재 위치 확인 현재 디렉터리 확인 현재 내가 어느 위치에 있는지 절대 경로로 출력 $ pwd /c/Users/중진공5/Desktop/test 바탕화면으로 이동 cd 명령어로 원하는 디렉터리로 이동 $ cd ~/Desktop 현재 위치의 파일 폴더 목록 보기 현재 디렉터리 안의 파일과 폴더를 나열 $ ls 숨김 파일 포함, 상세 정보까지 보기 $ ls -al 2. 폴더(디렉터리) 만들기 및 이동 test 폴더 안에서 새로운 폴더 만들기 mkdir로 새로운 폴더 생성 $ mkdir linux_practice 중첩 폴더를 한번에 만들기 (’-p’ 옵션) $ mkdir -p linux_practice/src/utils 만든 폴더로 이동 $ cd linux_practice 상위 폴더로 이동하기 $ cd .. 3. 파일 만들기 및 내용 확인 빈 파일 만들기 (touch) touch로 빈 파일 생성 $ cd ~개인경로/linux_practice $ touch hello.txt &gt;는 덮어쓰기, &gt;&gt;는 내용 추가 가급적이면 &gt;는 사용 금지 $ echo &#34;Hello, Linux!&#34; &gt; hello.txt $ echo &#34;두 번째 줄 추가&#34; &gt;&gt; hello.txt 파일 내용 확인 파일 전체 내용을 터미널에 출력 $ cat hello.txt vi 편집기 익히기 기본문법 vi 편집기 : 개발자 필수 / 분석가 옵션 / 기획자, 공부하지 마세요! 개발자의 경우 : 앞으로 markdown 작업할 때, vi 편집기로 하는 것 추천 키 동작 i 삽입 모드 진입 (현재 커서 앞) ESC 일반 모드로 복귀 :w 저장 :q 종료 :wq 저장 후 종료 :q! 저장 없이 강제 종료 4. 파일 폴더 복사, 이동, 삭제 파일 복사 (cp) cp [원본] [복사본] 형식 $ cp hello.txt hello_backup.txt 폴더 전체 복사 (-r 옵션) $ cp -r linux_practice/ linux_practice_backup/ 파일 폴더 이동 / 이름 변경 (mv) 같은 위치에서 이름만 바꾸면 이름 변경 $ mv hello_backup.txt hello_copy.txt archive 폴더 생성 hello_copy.txt 파일을 archive 이동 (mv) $ mkdir archive $ mv hello_copy.txt archive/ 파일 삭제 (rm) 파일 삭제 $ rm 파일명 폴더 전체 삭제 (-r 옵션) $ rm -r archive 강제 삭제 (-f 옵션) $ rm -rf 디렉터리/파일">
   <meta itemprop="datePublished" content="2026-05-28T14:41:00+09:00">
   <meta itemprop="dateModified" content="2026-05-28T14:41:00+09:00">
+  <meta itemprop="wordCount" content="282">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="nforest notes">
-  <meta name="twitter:description" content="공부한 것을 차곡차곡 정리하는 개인 기록 공간입니다.">
+  <meta name="twitter:title" content="서비스 기획, API, 백엔드, DB 기초 정리">
+  <meta name="twitter:description" content="현재 위치 확인 현재 디렉터리 확인 현재 내가 어느 위치에 있는지 절대 경로로 출력 $ pwd /c/Users/중진공5/Desktop/test 바탕화면으로 이동 cd 명령어로 원하는 디렉터리로 이동 $ cd ~/Desktop 현재 위치의 파일 폴더 목록 보기 현재 디렉터리 안의 파일과 폴더를 나열 $ ls 숨김 파일 포함, 상세 정보까지 보기 $ ls -al 2. 폴더(디렉터리) 만들기 및 이동 test 폴더 안에서 새로운 폴더 만들기 mkdir로 새로운 폴더 생성 $ mkdir linux_practice 중첩 폴더를 한번에 만들기 (’-p’ 옵션) $ mkdir -p linux_practice/src/utils 만든 폴더로 이동 $ cd linux_practice 상위 폴더로 이동하기 $ cd .. 3. 파일 만들기 및 내용 확인 빈 파일 만들기 (touch) touch로 빈 파일 생성 $ cd ~개인경로/linux_practice $ touch hello.txt &gt;는 덮어쓰기, &gt;&gt;는 내용 추가 가급적이면 &gt;는 사용 금지 $ echo &#34;Hello, Linux!&#34; &gt; hello.txt $ echo &#34;두 번째 줄 추가&#34; &gt;&gt; hello.txt 파일 내용 확인 파일 전체 내용을 터미널에 출력 $ cat hello.txt vi 편집기 익히기 기본문법 vi 편집기 : 개발자 필수 / 분석가 옵션 / 기획자, 공부하지 마세요! 개발자의 경우 : 앞으로 markdown 작업할 때, vi 편집기로 하는 것 추천 키 동작 i 삽입 모드 진입 (현재 커서 앞) ESC 일반 모드로 복귀 :w 저장 :q 종료 :wq 저장 후 종료 :q! 저장 없이 강제 종료 4. 파일 폴더 복사, 이동, 삭제 파일 복사 (cp) cp [원본] [복사본] 형식 $ cp hello.txt hello_backup.txt 폴더 전체 복사 (-r 옵션) $ cp -r linux_practice/ linux_practice_backup/ 파일 폴더 이동 / 이름 변경 (mv) 같은 위치에서 이름만 바꾸면 이름 변경 $ mv hello_backup.txt hello_copy.txt archive 폴더 생성 hello_copy.txt 파일을 archive 이동 (mv) $ mkdir archive $ mv hello_copy.txt archive/ 파일 삭제 (rm) 파일 삭제 $ rm 파일명 폴더 전체 삭제 (-r 옵션) $ rm -r archive 강제 삭제 (-f 옵션) $ rm -rf 디렉터리/파일">
 
       
       
@@ -72,11 +207,13 @@
 	
 <meta name="google-site-verification" content="EnNrdGCymJgu0LSduhvl5q6dq5ceCPWxt6b_m-kkU1A" />
 
-  </head><body class="ma0 avenir bg-near-white production is-home">
+  </head><body class="ma0 avenir bg-near-white production is-page is-page page-linux_tutorial_01">
     
+   
+  
 
   <header>
-    <div class="pb3-m pb6-l bg-black">
+    <div class="bg-black">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l center items-center justify-between">
     <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
@@ -94,48 +231,30 @@
   </div>
 </nav>
 
-      <div class="tc-l pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          nforest notes
-        </h1>
-        
-      </div>
     </div>
   </header>
 
 
+
     <main class="pb7" role="main">
-      <article class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy nested-links mid-gray">
-    
-  </article>
-
-  
-  
-  
-  
+      
   
 
-  
-    <div class="pa3 pa4-ns w-100 w-70-ns center">
+  <article class="page-linux_tutorial_01 flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    Posts
+</aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">서비스 기획, API, 백엔드, DB 기초 정리</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-05-28T14:41:00+09:00">5월 28, 2026</time>
       
 
-      <section class="w-100 mw8">
-        
-        
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
       
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/linux_tutorial_01/" class="color-inherit dim link">
-            서비스 기획, API, 백엔드, DB 기초 정리
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <h1 id="현재-위치-확인">현재 위치 확인</h1>
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><h1 id="현재-위치-확인">현재 위치 확인</h1>
 <h2 id="현재-디렉터리-확인">현재 디렉터리 확인</h2>
 <ul>
 <li>현재 내가 어느 위치에 있는지 절대 경로로 출력</li>
@@ -271,113 +390,12 @@
 <li>강제 삭제 (<code>-f</code> 옵션)</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rm -rf 디렉터리/파일
-</span></span></code></pre></div>
-        </div>
-        <a href="/posts/linux_tutorial_01/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%99%80-%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EC%B4%88-%EC%A0%95%EB%A6%AC/" class="color-inherit dim link">
-            운영체제와 리눅스 기초 정리
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <hr>
-<h1 id="운영체제와-리눅스-기초-정리">운영체제와 리눅스 기초 정리</h1>
-<p>운영체제와 리눅스 기초 수업을 들으면서 정리한 내용이다.
-전체 흐름은 다음과 같다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>운영체제 소개
-</span></span><span style="display:flex;"><span>→ 프로세스
-</span></span><span style="display:flex;"><span>→ 메모리
-</span></span><span style="display:flex;"><span>→ 파일 시스템
-</span></span><span style="display:flex;"><span>→ 리눅스 입문
-</span></span><span style="display:flex;"><span>→ 리눅스 파일 시스템
-</span></span><span style="display:flex;"><span>→ 리눅스 명령어
-</span></span><span style="display:flex;"><span>→ 프로세스와 네트워크
-</span></span></code></pre></div><hr>
-<h2 id="1-운영체제-소개">1. 운영체제 소개</h2>
-<p>운영체제, 즉 OS는 컴퓨터 하드웨어와 사용자가 실행하는 프로그램 사이에서 자원을 관리하는 핵심 소프트웨어다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>사용자 / 프로그램
-</span></span><span style="display:flex;"><span>        ↓
-</span></span><span style="display:flex;"><span>운영체제
-</span></span><span style="display:flex;"><span>        ↓
-</span></span><span style="display:flex;"><span>하드웨어
-</span></span></code></pre></div><p>예를 들어 사용자가 Python 파일을 실행하면 운영체제는 다음과 같은 일을 한다.</p>
-        </div>
-        <a href="/posts/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%99%80-%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EC%B4%88-%EC%A0%95%EB%A6%AC/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-          <div class="w-100 mb4 relative">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l dark-gray no-underline">
-    <div class="flex-column flex-row-ns flex">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/3rd_day/" class="color-inherit dim link">
-            우리가 매일 쓰지만 몰랐던 인터넷의 진짜 작동 원리: 깜짝 놀랄 4가지 핵심 포인트
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          <p>1. 도입부: 당연하게 여겼던 &lsquo;연결&rsquo; 뒤의 보이지 않는 세계</p>
-<p>스마트폰에서 웹사이트 주소를 입력하고 엔터를 누르는 순간, 화면에는 즉시 정보가 쏟아집니다. 초창기 인터넷이 단순히 텍스트만을 주고받던 시절을 지나, 이제는 고화질 이미지와 음성, 동영상까지 실시간으로 누리는 시대가 되었습니다. 하지만 이 매끄러운 &lsquo;연결&rsquo;의 이면에는 수많은 기계가 톱니바퀴처럼 맞물려 돌아가는 정교한 약속의 체계가 숨어 있습니다. 우리가 무심코 사용하는 인터넷과 HTTP라는 기술이 어떻게 보이지 않는 곳에서 데이터를 나르고 있는지, 그 경이로운 메커니즘을 IT 인사이트의 시선으로 풀어보겠습니다.</p>
-        </div>
-        <a href="/posts/3rd_day/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
-      </section>
-
-      
-        <section class="w-100">
-          <h1 class="f3">More</h1>
-          
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/posts/service-planning-api-backend/" class="link black dim">
-                서비스 기획, API, 백엔드, DB 기초 정리
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/posts/2nd_day/" class="link black dim">
-                윈도우만 쓰던 당신이 몰랐던, 리눅스 세계의 비밀스러운 작동 방식 5가지
-              </a>
-            </h2>
-          
-            <h2 class="f5 fw4 mb4 dib mr3">
-              <a href="/posts/1st_day/" class="link black dim">
-                알고 나면 세상이 다르게 보인다: 현업에서 바로 쓰는 IT 리터러시 핵심 노하우 5가지
-              </a>
-            </h2>
-          
-        </section>
-      
-
-    </div>
+</span></span></code></pre></div><ul class="pa0">
   
+</ul>
+
+      
+    </div></article>
 
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
