@@ -9,32 +9,32 @@
     <lastBuildDate>Thu, 28 May 2026 09:30:31 +0900</lastBuildDate>
     <atom:link href="https://nforestcat.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>3rd</title>
+      <title>우리가 매일 쓰지만 몰랐던 인터넷의 진짜 작동 원리: 깜짝 놀랄 4가지 핵심 포인트</title>
       <link>https://nforestcat.github.io/posts/3rd_day/</link>
       <pubDate>Thu, 28 May 2026 09:30:31 +0900</pubDate>
       <guid>https://nforestcat.github.io/posts/3rd_day/</guid>
-      <description>&lt;p&gt;우리가 매일 쓰지만 몰랐던 인터넷의 &amp;lsquo;진짜&amp;rsquo; 작동 원리: 깜짝 놀랄 4가지 핵심 포인트&lt;/p&gt;&#xA;&lt;p&gt;1. 도입부: 당연하게 여겼던 &amp;lsquo;연결&amp;rsquo; 뒤의 보이지 않는 세계&lt;/p&gt;&#xA;&lt;p&gt;스마트폰에서 웹사이트 주소를 입력하고 엔터를 누르는 순간, 화면에는 즉시 정보가 쏟아집니다. 초창기 인터넷이 단순히 텍스트만을 주고받던 시절을 지나, 이제는 고화질 이미지와 음성, 동영상까지 실시간으로 누리는 시대가 되었습니다. 하지만 이 매끄러운 &amp;lsquo;연결&amp;rsquo;의 이면에는 수많은 기계가 톱니바퀴처럼 맞물려 돌아가는 정교한 약속의 체계가 숨어 있습니다. 우리가 무심코 사용하는 인터넷과 HTTP라는 기술이 어떻게 보이지 않는 곳에서 데이터를 나르고 있는지, 그 경이로운 메커니즘을 IT 인사이트의 시선으로 풀어보겠습니다.&lt;/p&gt;</description>
+      <description>&lt;p&gt;1. 도입부: 당연하게 여겼던 &amp;lsquo;연결&amp;rsquo; 뒤의 보이지 않는 세계&lt;/p&gt;&#xA;&lt;p&gt;스마트폰에서 웹사이트 주소를 입력하고 엔터를 누르는 순간, 화면에는 즉시 정보가 쏟아집니다. 초창기 인터넷이 단순히 텍스트만을 주고받던 시절을 지나, 이제는 고화질 이미지와 음성, 동영상까지 실시간으로 누리는 시대가 되었습니다. 하지만 이 매끄러운 &amp;lsquo;연결&amp;rsquo;의 이면에는 수많은 기계가 톱니바퀴처럼 맞물려 돌아가는 정교한 약속의 체계가 숨어 있습니다. 우리가 무심코 사용하는 인터넷과 HTTP라는 기술이 어떻게 보이지 않는 곳에서 데이터를 나르고 있는지, 그 경이로운 메커니즘을 IT 인사이트의 시선으로 풀어보겠습니다.&lt;/p&gt;</description>
     </item>
     <item>
       <title>서비스 기획, API, 백엔드, DB 기초 정리</title>
       <link>https://nforestcat.github.io/posts/service-planning-api-backend/</link>
       <pubDate>Wed, 27 May 2026 13:00:00 +0900</pubDate>
       <guid>https://nforestcat.github.io/posts/service-planning-api-backend/</guid>
-      <description>&lt;p&gt;## 들어가며&lt;/p&gt;&#xA;&lt;p&gt;서비스 기획을 공부하면서 단순히 “사용자 화면”만 생각하는 것이 아니라, 관리자 페이지, API, DB, 보안, 법적 이슈, 배포, 포트폴리오까지 함께 고려해야 한다는 점을 정리했다.&lt;/p&gt;&#xA;&lt;p&gt;예시 서비스로는 **알러지 정보를 알려주는 음식점 지도 앱**을 기준으로 생각했다.&lt;/p&gt;&#xA;&lt;p&gt;핵심 아이디어는 다음과 같다.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;사용자가 위치 정보를 켜고 앱에 들어가면, 주변 음식점의 어떤 메뉴에 어떤 알러지 성분이 들어 있는지 알려주는 지도 서비스&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;이 서비스는 단순 맛집 앱이 아니라 위치 기반 서비스, 음식 데이터 플랫폼, 사용자 제보 시스템, 개인정보 및 위치정보 처리까지 포함하는 서비스다.&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;들어가며&#34;&gt;들어가며&lt;/h2&gt;&#xA;&lt;p&gt;서비스 기획을 공부하면서 단순히 “사용자 화면”만 생각하는 것이 아니라, 관리자 페이지, API, DB, 보안, 법적 이슈, 배포, 포트폴리오까지 함께 고려해야 한다는 점을 정리했다.&lt;/p&gt;&#xA;&lt;p&gt;예시 서비스로는 &lt;strong&gt;알러지 정보를 알려주는 음식점 지도 앱&lt;/strong&gt;을 기준으로 생각했다.&lt;/p&gt;&#xA;&lt;p&gt;핵심 아이디어는 다음과 같다.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;사용자가 위치 정보를 켜고 앱에 들어가면, 주변 음식점의 어떤 메뉴에 어떤 알러지 성분이 들어 있는지 알려주는 지도 서비스&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;이 서비스는 단순 맛집 앱이 아니라 위치 기반 서비스, 음식 데이터 플랫폼, 사용자 제보 시스템, 개인정보 및 위치정보 처리까지 포함하는 서비스다.&lt;/p&gt;</description>
     </item>
     <item>
       <title>윈도우만 쓰던 당신이 몰랐던, 리눅스 세계의 비밀스러운 작동 방식 5가지</title>
       <link>https://nforestcat.github.io/posts/2nd_day/</link>
       <pubDate>Wed, 27 May 2026 10:02:48 +0900</pubDate>
       <guid>https://nforestcat.github.io/posts/2nd_day/</guid>
-      <description>&lt;p&gt;윈도우만 쓰던 당신이 몰랐던, 리눅스 세계의 &amp;lsquo;비밀스러운&amp;rsquo; 작동 방식 5가지&lt;/p&gt;&#xA;&lt;p&gt;1. 도입부: 검은 화면 뒤에 숨겨진 정교한 논리&lt;/p&gt;&#xA;&lt;p&gt;처음 리눅스 터미널을 열었을 때 마주하는 그 &amp;lsquo;검은 화면&amp;rsquo;과 깜빡이는 커서는 윈도우의 화려한 그래픽 환경(GUI)에 익숙한 사용자들에게는 다소 막막한 벽처럼 느껴질 수 있습니다. 하지만 시스템 아키텍처 관점에서 보면, 이 정적인 화면 뒤에는 윈도우와는 완전히 다른 리눅스만의 정교하고 투명한 논리가 숨어 있습니다.&lt;/p&gt;&#xA;&lt;p&gt;리눅스는 단순히 명령어를 입력하는 공간이 아니라, 매우 체계적인 철학 위에서 설계된 운영체제입니다. 이 글에서는 리눅스 시스템의 3대 핵심축인 파일 시스템, 프로세스 관리, 그리고 자동화 원리를 통해 리눅스라는 강력한 도구가 어떻게 움직이는지 그 &amp;lsquo;비밀&amp;rsquo;을 전문가의 시선으로 파헤쳐 보겠습니다.&lt;/p&gt;</description>
+      <description>&lt;p&gt;1. 도입부: 검은 화면 뒤에 숨겨진 정교한 논리&lt;/p&gt;&#xA;&lt;p&gt;처음 리눅스 터미널을 열었을 때 마주하는 그 &amp;lsquo;검은 화면&amp;rsquo;과 깜빡이는 커서는 윈도우의 화려한 그래픽 환경(GUI)에 익숙한 사용자들에게는 다소 막막한 벽처럼 느껴질 수 있습니다. 하지만 시스템 아키텍처 관점에서 보면, 이 정적인 화면 뒤에는 윈도우와는 완전히 다른 리눅스만의 정교하고 투명한 논리가 숨어 있습니다.&lt;/p&gt;&#xA;&lt;p&gt;리눅스는 단순히 명령어를 입력하는 공간이 아니라, 매우 체계적인 철학 위에서 설계된 운영체제입니다. 이 글에서는 리눅스 시스템의 3대 핵심축인 파일 시스템, 프로세스 관리, 그리고 자동화 원리를 통해 리눅스라는 강력한 도구가 어떻게 움직이는지 그 &amp;lsquo;비밀&amp;rsquo;을 전문가의 시선으로 파헤쳐 보겠습니다.&lt;/p&gt;</description>
     </item>
     <item>
       <title>알고 나면 세상이 다르게 보인다: 현업에서 바로 쓰는 IT 리터러시 핵심 노하우 5가지</title>
       <link>https://nforestcat.github.io/posts/1st_day/</link>
       <pubDate>Tue, 26 May 2026 15:52:54 +0900</pubDate>
       <guid>https://nforestcat.github.io/posts/1st_day/</guid>
-      <description>&lt;p&gt;알고 나면 세상이 다르게 보인다: 현업에서 바로 쓰는 IT 리터러시 핵심 노하우 5가지&lt;/p&gt;&#xA;&lt;p&gt;현대 직장인에게 &amp;lsquo;IT 리터러시&amp;rsquo;는 단순한 기술 지식을 넘어 비즈니스의 로직을 이해하고 업무 효율을 극대화하는 필수적인 도구입니다. 회의 중 쏟아지는 낯선 용어에 당황하거나, 매일 쓰는 앱이 왜 이렇게 설계되었는지 궁금했던 적이 있으신가요? 기술의 표면이 아닌 그 이면의 설계를 이해하면 세상을 보는 눈이 달라집니다. 현업에서 바로 활용할 수 있는 핵심 노하우 5가지를 소개합니다.&lt;/p&gt;&#xA;&lt;p&gt;1. 버전 관리: 코드의 시간을 되돌리는 마법, Git&lt;/p&gt;</description>
+      <description>&lt;p&gt;현대 직장인에게 &amp;lsquo;IT 리터러시&amp;rsquo;는 단순한 기술 지식을 넘어 비즈니스의 로직을 이해하고 업무 효율을 극대화하는 필수적인 도구입니다. 회의 중 쏟아지는 낯선 용어에 당황하거나, 매일 쓰는 앱이 왜 이렇게 설계되었는지 궁금했던 적이 있으신가요? 기술의 표면이 아닌 그 이면의 설계를 이해하면 세상을 보는 눈이 달라집니다. 현업에서 바로 활용할 수 있는 핵심 노하우 5가지를 소개합니다.&lt;/p&gt;&#xA;&lt;p&gt;1. 버전 관리: 코드의 시간을 되돌리는 마법, Git&lt;/p&gt;&#xA;&lt;p&gt;IT 프로젝트에서 &amp;lsquo;버전 관리(Version Control)&amp;lsquo;는 프로젝트의 모든 변화를 기록하고 관리하는 방법론입니다. 리눅스(Linux) OS를 만든 리누스 토발즈가 제작한 &amp;lsquo;Git&amp;rsquo;은 현재 전 세계 개발 업계를 평정한 표준 시스템입니다. 마이크로소프트가 GitHub를 8조 원에 인수한 사례나, Bitbucket의 개발사인 아틀라시안(Atlassian)의 공동창업자가 호주 부호 6위에 올랐다는 사실은 이 버전 관리 시장의 가치가 얼마나 거대한지 잘 보여줍니다.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
