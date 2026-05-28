@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>운영체제와 리눅스 기초 정리 | nforest notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="
+운영체제와 리눅스 기초 정리
+운영체제와 리눅스 기초 수업을 들으면서 정리한 내용이다.
+전체 흐름은 다음과 같다.
+운영체제 소개
+→ 프로세스
+→ 메모리
+→ 파일 시스템
+→ 리눅스 입문
+→ 리눅스 파일 시스템
+→ 리눅스 명령어
+→ 프로세스와 네트워크
+
+1. 운영체제 소개
+운영체제, 즉 OS는 컴퓨터 하드웨어와 사용자가 실행하는 프로그램 사이에서 자원을 관리하는 핵심 소프트웨어다.
+사용자 / 프로그램
+        ↓
+운영체제
+        ↓
+하드웨어
+예를 들어 사용자가 Python 파일을 실행하면 운영체제는 다음과 같은 일을 한다.">
+    <meta name="generator" content="Hugo 0.161.1">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    <link rel="stylesheet" href="/ananke/css/main.fe543ec729f225f1a33caed07775c832a416476900d82ba51765d6ead9de6758.css" integrity="sha256-/lQ&#43;xynyJfGjPK7Qd3XIMqQWR2kA2CulF2XW6tneZ1g=" crossorigin="anonymous">
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://nforestcat.github.io/posts/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%99%80-%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EC%B4%88-%EC%A0%95%EB%A6%AC/">
+    
+
+    
+    
+    <meta property="og:url" content="https://nforestcat.github.io/posts/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%99%80-%EB%A6%AC%EB%88%85%EC%8A%A4-%EA%B8%B0%EC%B4%88-%EC%A0%95%EB%A6%AC/">
+  <meta property="og:site_name" content="nforest notes">
+  <meta property="og:title" content="운영체제와 리눅스 기초 정리">
+  <meta property="og:description" content="운영체제와 리눅스 기초 정리 운영체제와 리눅스 기초 수업을 들으면서 정리한 내용이다. 전체 흐름은 다음과 같다.
+운영체제 소개 → 프로세스 → 메모리 → 파일 시스템 → 리눅스 입문 → 리눅스 파일 시스템 → 리눅스 명령어 → 프로세스와 네트워크 1. 운영체제 소개 운영체제, 즉 OS는 컴퓨터 하드웨어와 사용자가 실행하는 프로그램 사이에서 자원을 관리하는 핵심 소프트웨어다.
+사용자 / 프로그램 ↓ 운영체제 ↓ 하드웨어 예를 들어 사용자가 Python 파일을 실행하면 운영체제는 다음과 같은 일을 한다.">
+  <meta property="og:locale" content="ko_kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-28T10:34:00+09:00">
+    <meta property="article:modified_time" content="2026-05-28T10:34:00+09:00">
+    <meta property="article:tag" content="운영체제">
+    <meta property="article:tag" content="리눅스">
+    <meta property="article:tag" content="프로세스">
+    <meta property="article:tag" content="메모리">
+    <meta property="article:tag" content="파일시스템">
+    <meta property="article:tag" content="정규표현식">
+
+  <meta itemprop="name" content="운영체제와 리눅스 기초 정리">
+  <meta itemprop="description" content="운영체제와 리눅스 기초 정리 운영체제와 리눅스 기초 수업을 들으면서 정리한 내용이다. 전체 흐름은 다음과 같다.
+운영체제 소개 → 프로세스 → 메모리 → 파일 시스템 → 리눅스 입문 → 리눅스 파일 시스템 → 리눅스 명령어 → 프로세스와 네트워크 1. 운영체제 소개 운영체제, 즉 OS는 컴퓨터 하드웨어와 사용자가 실행하는 프로그램 사이에서 자원을 관리하는 핵심 소프트웨어다.
+사용자 / 프로그램 ↓ 운영체제 ↓ 하드웨어 예를 들어 사용자가 Python 파일을 실행하면 운영체제는 다음과 같은 일을 한다.">
+  <meta itemprop="datePublished" content="2026-05-28T10:34:00+09:00">
+  <meta itemprop="dateModified" content="2026-05-28T10:34:00+09:00">
+  <meta itemprop="wordCount" content="2718">
+  <meta itemprop="keywords" content="운영체제,리눅스,프로세스,메모리,파일시스템,정규표현식,CLI">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="운영체제와 리눅스 기초 정리">
+  <meta name="twitter:description" content="운영체제와 리눅스 기초 정리 운영체제와 리눅스 기초 수업을 들으면서 정리한 내용이다. 전체 흐름은 다음과 같다.
+운영체제 소개 → 프로세스 → 메모리 → 파일 시스템 → 리눅스 입문 → 리눅스 파일 시스템 → 리눅스 명령어 → 프로세스와 네트워크 1. 운영체제 소개 운영체제, 즉 OS는 컴퓨터 하드웨어와 사용자가 실행하는 프로그램 사이에서 자원을 관리하는 핵심 소프트웨어다.
+사용자 / 프로그램 ↓ 운영체제 ↓ 하드웨어 예를 들어 사용자가 Python 파일을 실행하면 운영체제는 다음과 같은 일을 한다.">
+
+      
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-M6TD8WH419"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-M6TD8WH419');
+        }
+      </script>
+    
+	
+<meta name="google-site-verification" content="EnNrdGCymJgu0LSduhvl5q6dq5ceCPWxt6b_m-kkU1A" />
+
+  </head><body class="ma0 avenir bg-near-white production is-page is-page page-운영체제와 리눅스 기초 정리">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        nforest notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-운영체제와 리눅스 기초 정리 flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    Posts
+</aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">운영체제와 리눅스 기초 정리</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-05-28T10:34:00+09:00">5월 28, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><hr>
+<h1 id="운영체제와-리눅스-기초-정리">운영체제와 리눅스 기초 정리</h1>
+<p>운영체제와 리눅스 기초 수업을 들으면서 정리한 내용이다.
+전체 흐름은 다음과 같다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>운영체제 소개
+</span></span><span style="display:flex;"><span>→ 프로세스
+</span></span><span style="display:flex;"><span>→ 메모리
+</span></span><span style="display:flex;"><span>→ 파일 시스템
+</span></span><span style="display:flex;"><span>→ 리눅스 입문
+</span></span><span style="display:flex;"><span>→ 리눅스 파일 시스템
+</span></span><span style="display:flex;"><span>→ 리눅스 명령어
+</span></span><span style="display:flex;"><span>→ 프로세스와 네트워크
+</span></span></code></pre></div><hr>
+<h2 id="1-운영체제-소개">1. 운영체제 소개</h2>
+<p>운영체제, 즉 OS는 컴퓨터 하드웨어와 사용자가 실행하는 프로그램 사이에서 자원을 관리하는 핵심 소프트웨어다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>사용자 / 프로그램
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>운영체제
+</span></span><span style="display:flex;"><span>        ↓
+</span></span><span style="display:flex;"><span>하드웨어
+</span></span></code></pre></div><p>예를 들어 사용자가 Python 파일을 실행하면 운영체제는 다음과 같은 일을 한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1. 프로그램을 실행한다.
+</span></span><span style="display:flex;"><span>2. 필요한 파일을 디스크에서 읽는다.
+</span></span><span style="display:flex;"><span>3. 프로그램을 메모리에 올린다.
+</span></span><span style="display:flex;"><span>4. CPU가 실행할 수 있도록 스케줄링한다.
+</span></span><span style="display:flex;"><span>5. 입력과 출력을 처리한다.
+</span></span><span style="display:flex;"><span>6. 프로그램이 끝나면 사용한 자원을 회수한다.
+</span></span></code></pre></div><p>즉, 운영체제는 CPU, 메모리, 파일, 장치, 네트워크 같은 컴퓨터 자원을 관리하고 프로그램이 안전하게 실행될 수 있도록 도와준다.</p>
+<h3 id="운영체제의-주요-기능">운영체제의 주요 기능</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1. 프로세스 관리
+</span></span><span style="display:flex;"><span>2. 메모리 관리
+</span></span><span style="display:flex;"><span>3. 파일 시스템 관리
+</span></span><span style="display:flex;"><span>4. 입출력 장치 관리
+</span></span><span style="display:flex;"><span>5. 사용자 인터페이스 제공
+</span></span><span style="display:flex;"><span>6. 보안과 권한 관리
+</span></span></code></pre></div><h3 id="커널과-셸">커널과 셸</h3>
+<p>운영체제 구조는 다음처럼 이해할 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>사용자
+</span></span><span style="display:flex;"><span>  ↓
+</span></span><span style="display:flex;"><span>응용 프로그램
+</span></span><span style="display:flex;"><span>  ↓
+</span></span><span style="display:flex;"><span>Shell 또는 GUI
+</span></span><span style="display:flex;"><span>  ↓
+</span></span><span style="display:flex;"><span>Kernel
+</span></span><span style="display:flex;"><span>  ↓
+</span></span><span style="display:flex;"><span>하드웨어
+</span></span></code></pre></div><p>커널은 운영체제의 핵심이다. CPU, 메모리, 프로세스, 파일 시스템, 장치, 네트워크를 직접 관리한다.</p>
+<p>셸은 사용자의 명령어를 해석해서 커널에 전달하는 프로그램이다.</p>
+<p>예를 들어 터미널에서 다음 명령어를 입력하면:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls
+</span></span></code></pre></div><p>흐름은 다음과 같다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>사용자 입력: ls
+</span></span><span style="display:flex;"><span>→ Shell이 명령어 해석
+</span></span><span style="display:flex;"><span>→ Kernel에 파일 목록 요청
+</span></span><span style="display:flex;"><span>→ 결과 출력
+</span></span></code></pre></div><hr>
+<h2 id="2-프로세스">2. 프로세스</h2>
+<p>프로세스는 실행 중인 프로그램이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>프로그램 = 실행 전 파일
+</span></span><span style="display:flex;"><span>프로세스 = 실행 중인 프로그램
+</span></span></code></pre></div><p>예를 들어 <code>program.py</code>라는 파일이 디스크에 저장되어 있을 때는 프로그램이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>program.py
+</span></span></code></pre></div><p>하지만 다음처럼 실행하면 운영체제가 이 프로그램을 메모리에 올리고 CPU가 실행할 수 있게 만든다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python program.py
+</span></span></code></pre></div><p>이 순간부터는 프로세스가 된다.</p>
+<h3 id="프로그램-프로세스-스레드">프로그램, 프로세스, 스레드</h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>프로그램</td>
+          <td>특정 작업을 수행하는 명령어들의 모음</td>
+      </tr>
+      <tr>
+          <td>프로세스</td>
+          <td>실행 중인 프로그램</td>
+      </tr>
+      <tr>
+          <td>스레드</td>
+          <td>프로세스 안에서 실행되는 흐름 단위</td>
+      </tr>
+  </tbody>
+</table>
+<p>하나의 프로세스 안에는 하나 이상의 스레드가 존재할 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Chrome 프로세스
+</span></span><span style="display:flex;"><span>├─ 화면 렌더링 스레드
+</span></span><span style="display:flex;"><span>├─ 네트워크 요청 스레드
+</span></span><span style="display:flex;"><span>├─ 사용자 입력 처리 스레드
+</span></span><span style="display:flex;"><span>└─ 확장 프로그램 처리 스레드
+</span></span></code></pre></div><h3 id="프로세스와-스레드의-차이">프로세스와 스레드의 차이</h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>프로세스</th>
+          <th>스레드</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>실행 단위</td>
+          <td>독립된 실행 단위</td>
+          <td>프로세스 내부 실행 흐름</td>
+      </tr>
+      <tr>
+          <td>메모리</td>
+          <td>독립적인 메모리 공간 사용</td>
+          <td>같은 프로세스 메모리 공유</td>
+      </tr>
+      <tr>
+          <td>생성 비용</td>
+          <td>상대적으로 큼</td>
+          <td>상대적으로 작음</td>
+      </tr>
+      <tr>
+          <td>안정성</td>
+          <td>하나가 죽어도 다른 프로세스에 영향이 적음</td>
+          <td>한 스레드 문제가 전체 프로세스에 영향 가능</td>
+      </tr>
+  </tbody>
+</table>
+<p>핵심은 다음과 같다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>프로세스 = 독립된 실행 공간
+</span></span><span style="display:flex;"><span>스레드 = 프로세스 안의 실행 흐름
+</span></span></code></pre></div><hr>
+<h2 id="3-프로세스의-메모리-구조">3. 프로세스의 메모리 구조</h2>
+<p>프로세스가 실행되면 메모리 안에 여러 영역을 가진다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Code 영역
+</span></span><span style="display:flex;"><span>Data 영역
+</span></span><span style="display:flex;"><span>BSS 영역
+</span></span><span style="display:flex;"><span>Heap 영역
+</span></span><span style="display:flex;"><span>Stack 영역
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>영역</th>
+          <th>의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Code 영역</td>
+          <td>CPU가 실행할 명령어가 저장되는 영역</td>
+      </tr>
+      <tr>
+          <td>Data 영역</td>
+          <td>전역 변수, 정적 변수가 저장되는 영역</td>
+      </tr>
+      <tr>
+          <td>BSS 영역</td>
+          <td>초기화되지 않은 전역 변수, 정적 변수가 저장되는 영역</td>
+      </tr>
+      <tr>
+          <td>Heap 영역</td>
+          <td>실행 중 동적으로 생성되는 데이터가 저장되는 영역</td>
+      </tr>
+      <tr>
+          <td>Stack 영역</td>
+          <td>함수 호출, 매개변수, 지역 변수, 복귀 주소가 저장되는 영역</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="code-영역">Code 영역</h3>
+<p>Code 영역은 실행할 명령어가 저장되는 곳이다.
+Text 영역이라고도 부른다.</p>
+<p>예를 들어 다음 함수의 실행 명령은 Code 영역과 관련된다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(a, b):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b
+</span></span></code></pre></div><h3 id="data-영역">Data 영역</h3>
+<p>Data 영역은 프로그램 시작부터 종료까지 유지되는 값들이 저장되는 공간이다.</p>
+<p>예를 들어 전역 변수는 Data 영역과 관련된다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">increase</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> count
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h3 id="heap-영역">Heap 영역</h3>
+<p>Heap 영역은 실행 중에 동적으로 만들어지는 데이터가 저장되는 곳이다.</p>
+<p>Python에서는 리스트, 딕셔너리, 객체 같은 데이터가 Heap 영역과 관련된다고 이해할 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>numbers <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>person <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Kim&#34;</span>}
+</span></span></code></pre></div><h3 id="stack-영역">Stack 영역</h3>
+<p>Stack 영역은 함수 호출과 관련된 임시 데이터가 저장되는 곳이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(a, b):
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> b
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result
+</span></span></code></pre></div><p>여기서 <code>a</code>, <code>b</code>, <code>result</code>는 함수 실행 중 필요한 임시 데이터다.
+함수 호출이 끝나면 해당 Stack 영역도 사라진다.</p>
+<p>Stack은 후입선출 구조다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>LIFO = Last In, First Out
+</span></span><span style="display:flex;"><span>마지막에 들어간 것이 먼저 나온다.
+</span></span></code></pre></div><hr>
+<h2 id="4-프로세스의-상태">4. 프로세스의 상태</h2>
+<p>프로세스는 실행되는 동안 여러 상태를 오간다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>생성
+</span></span><span style="display:flex;"><span>준비
+</span></span><span style="display:flex;"><span>실행
+</span></span><span style="display:flex;"><span>대기
+</span></span><span style="display:flex;"><span>종료
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>상태</th>
+          <th>의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>생성</td>
+          <td>프로세스가 만들어지는 단계</td>
+      </tr>
+      <tr>
+          <td>준비</td>
+          <td>CPU만 받으면 실행할 수 있는 상태</td>
+      </tr>
+      <tr>
+          <td>실행</td>
+          <td>CPU를 할당받아 실제로 실행 중인 상태</td>
+      </tr>
+      <tr>
+          <td>대기</td>
+          <td>입출력이나 특정 이벤트를 기다리는 상태</td>
+      </tr>
+      <tr>
+          <td>종료</td>
+          <td>실행이 끝난 상태</td>
+      </tr>
+  </tbody>
+</table>
+<p>전체 흐름은 다음과 같다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>생성
+</span></span><span style="display:flex;"><span> ↓
+</span></span><span style="display:flex;"><span>준비
+</span></span><span style="display:flex;"><span> ↓
+</span></span><span style="display:flex;"><span>실행
+</span></span><span style="display:flex;"><span> ↓
+</span></span><span style="display:flex;"><span>종료
+</span></span></code></pre></div><p>하지만 실행 중에 파일 읽기, 네트워크 응답, 키보드 입력 같은 대기 상황이 생기면 다음 흐름이 된다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>실행
+</span></span><span style="display:flex;"><span> ↓
+</span></span><span style="display:flex;"><span>대기
+</span></span><span style="display:flex;"><span> ↓
+</span></span><span style="display:flex;"><span>준비
+</span></span><span style="display:flex;"><span> ↓
+</span></span><span style="display:flex;"><span>실행
+</span></span></code></pre></div><hr>
+<h2 id="5-멀티-프로세싱과-멀티-스레딩">5. 멀티 프로세싱과 멀티 스레딩</h2>
+<h3 id="멀티-프로세싱">멀티 프로세싱</h3>
+<p>멀티 프로세싱은 여러 프로세스를 실행해서 작업을 나누는 방식이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>프로세스 A 실행
+</span></span><span style="display:flex;"><span>프로세스 B 실행
+</span></span><span style="display:flex;"><span>프로세스 C 실행
+</span></span></code></pre></div><p>각 프로세스는 독립적인 메모리 공간을 가진다.
+따라서 안정성은 상대적으로 높지만, 생성 비용과 메모리 사용량이 크다.</p>
+<h3 id="멀티-스레딩">멀티 스레딩</h3>
+<p>멀티 스레딩은 하나의 프로세스 안에서 여러 스레드가 작업을 나누는 방식이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>프로세스
+</span></span><span style="display:flex;"><span>├─ 스레드 1
+</span></span><span style="display:flex;"><span>├─ 스레드 2
+</span></span><span style="display:flex;"><span>└─ 스레드 3
+</span></span></code></pre></div><p>스레드들은 같은 프로세스의 메모리를 공유한다.
+따라서 생성 비용이 작고 빠르지만, 하나의 스레드 문제가 전체 프로세스에 영향을 줄 수 있다.</p>
+<hr>
+<h2 id="6-프로세스-스케줄링">6. 프로세스 스케줄링</h2>
+<p>프로세스 스케줄링은 운영체제가 어떤 프로세스에게 CPU를 줄지 결정하는 작업이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Ready Queue
+</span></span><span style="display:flex;"><span>[P1, P2, P3, P4]
+</span></span></code></pre></div><p>CPU는 제한된 자원이기 때문에 운영체제가 실행 순서를 정해야 한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>P1 실행
+</span></span><span style="display:flex;"><span>→ P2 실행
+</span></span><span style="display:flex;"><span>→ P3 실행
+</span></span><span style="display:flex;"><span>→ 다시 P1 실행
+</span></span></code></pre></div><p>사용자 입장에서는 여러 프로그램이 동시에 실행되는 것처럼 보이지만, 실제로는 운영체제가 CPU 사용 시간을 잘게 나누어 배분한다.</p>
+<hr>
+<h2 id="7-교착상태와-기아상태">7. 교착상태와 기아상태</h2>
+<h3 id="교착상태">교착상태</h3>
+<p>교착상태는 여러 프로세스가 서로 자원을 기다리면서 아무도 진행하지 못하는 상태다.</p>
+<p>예를 들어:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>프로세스 A는 프린터를 가지고 있고, 스캐너를 기다림
+</span></span><span style="display:flex;"><span>프로세스 B는 스캐너를 가지고 있고, 프린터를 기다림
+</span></span></code></pre></div><p>이 경우 두 프로세스 모두 서로가 가진 자원을 기다리므로 멈춘다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>교착상태 = 서로 자원을 기다리며 멈춘 상태
+</span></span></code></pre></div><h3 id="기아상태">기아상태</h3>
+<p>기아상태는 특정 프로세스가 계속 실행 기회를 얻지 못하는 상태다.</p>
+<p>예를 들어 우선순위가 높은 프로세스가 계속 들어오면, 우선순위가 낮은 프로세스는 계속 밀릴 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>기아상태 = 특정 프로세스가 자원이나 CPU를 계속 배정받지 못하는 상태
+</span></span></code></pre></div><hr>
+<h2 id="8-메모리-관리">8. 메모리 관리</h2>
+<p>메모리 관리는 프로그램들이 잘 실행될 수 있도록 메모리를 할당하고 해제하는 작업이다.</p>
+<p>운영체제는 여러 프로그램이 동시에 실행될 수 있도록 메모리 공간을 나누어 주고, 프로그램이 끝나면 해당 공간을 회수한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>프로그램 실행
+</span></span><span style="display:flex;"><span>→ 메모리 할당
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>프로그램 종료
+</span></span><span style="display:flex;"><span>→ 메모리 해제
+</span></span></code></pre></div><h3 id="메모리-주소">메모리 주소</h3>
+<p>메모리는 여러 칸으로 나누어져 있고, 각 칸에는 주소가 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[ ] [ ] [ ] [ ] [ ] [ ] [ ]
+</span></span><span style="display:flex;"><span> 0   1   2   3   4   5   6
+</span></span></code></pre></div><p>CPU는 이 주소를 기준으로 데이터를 찾는다.</p>
+<hr>
+<h2 id="9-연속-할당과-불연속-할당">9. 연속 할당과 불연속 할당</h2>
+<h3 id="연속-할당">연속 할당</h3>
+<p>연속 할당은 하나의 프로그램에게 연속된 메모리 공간을 주는 방식이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[ A ][ A ][ A ][ A ][ ][ ][ ]
+</span></span></code></pre></div><p>장점은 단순하다는 점이다.
+하지만 연속된 큰 공간이 필요하기 때문에 외부 단편화 문제가 생길 수 있다.</p>
+<h3 id="불연속-할당">불연속 할당</h3>
+<p>불연속 할당은 하나의 프로그램을 여러 조각으로 나누어 떨어진 메모리 공간에 배치하는 방식이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[ A ][ ][ A ][ ][ A ][ A ][ ]
+</span></span></code></pre></div><p>장점은 빈 공간을 더 유연하게 사용할 수 있다는 점이다.
+단점은 어느 조각이 어디에 있는지 관리해야 해서 복잡하다는 점이다.</p>
+<hr>
+<h2 id="10-외부-단편화와-내부-단편화">10. 외부 단편화와 내부 단편화</h2>
+<h3 id="외부-단편화">외부 단편화</h3>
+<p>외부 단편화는 빈 공간은 충분하지만, 그 공간들이 여기저기 흩어져 있어서 사용할 수 없는 문제다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[사용][빈 2칸][사용][빈 3칸][사용][빈 2칸]
+</span></span></code></pre></div><p>빈 공간을 모두 합치면 7칸이지만, 연속된 5칸이 필요한 프로그램은 들어갈 수 없다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>외부 단편화
+</span></span><span style="display:flex;"><span>= 빈 공간이 조각조각 흩어져 큰 연속 공간을 만들지 못하는 문제
+</span></span></code></pre></div><h3 id="내부-단편화">내부 단편화</h3>
+<p>내부 단편화는 할당받은 공간 내부에서 실제로 쓰지 않는 공간이 낭비되는 문제다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>필요한 공간: 3칸
+</span></span><span style="display:flex;"><span>할당받은 공간: 4칸
+</span></span><span style="display:flex;"><span>낭비: 1칸
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>내부 단편화
+</span></span><span style="display:flex;"><span>= 할당받은 공간 안에서 실제 사용하지 않는 공간이 생기는 문제
+</span></span></code></pre></div><hr>
+<h2 id="11-가상-메모리">11. 가상 메모리</h2>
+<p>가상 메모리는 실제 메모리보다 더 큰 메모리를 사용하는 것처럼 보이게 하는 기술이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>프로그램이 보는 메모리 = 가상 메모리
+</span></span><span style="display:flex;"><span>실제 장치에 있는 메모리 = 물리 메모리
+</span></span></code></pre></div><p>프로그램은 자신만의 독립적인 메모리 공간을 가진 것처럼 동작한다.
+운영체제와 하드웨어가 가상 주소를 실제 물리 주소로 변환해준다.</p>
+<p>가상 메모리를 사용하는 이유는 다음과 같다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1. 프로그램마다 독립적인 메모리 공간을 제공하기 위해
+</span></span><span style="display:flex;"><span>2. 실제 RAM보다 큰 프로그램도 실행할 수 있게 하기 위해
+</span></span><span style="display:flex;"><span>3. 프로세스 간 메모리 보호를 위해
+</span></span></code></pre></div><hr>
+<h2 id="12-페이징과-세그멘테이션">12. 페이징과 세그멘테이션</h2>
+<h3 id="페이징">페이징</h3>
+<p>페이징은 메모리를 같은 크기의 작은 블록으로 나누어 관리하는 방식이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>가상 메모리 → 페이지
+</span></span><span style="display:flex;"><span>물리 메모리 → 프레임
+</span></span></code></pre></div><p>페이지는 물리 메모리에 연속적으로 올라갈 필요가 없다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>페이지 0 → 프레임 3
+</span></span><span style="display:flex;"><span>페이지 1 → 프레임 0
+</span></span><span style="display:flex;"><span>페이지 2 → 프레임 5
+</span></span></code></pre></div><p>페이징은 외부 단편화를 줄일 수 있지만, 마지막 페이지에서 내부 단편화가 생길 수 있다.</p>
+<h3 id="세그멘테이션">세그멘테이션</h3>
+<p>세그멘테이션은 메모리를 의미 있는 단위로 나누는 방식이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Code Segment
+</span></span><span style="display:flex;"><span>Data Segment
+</span></span><span style="display:flex;"><span>Heap Segment
+</span></span><span style="display:flex;"><span>Stack Segment
+</span></span></code></pre></div><p>페이징과 세그멘테이션의 차이는 다음과 같다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>페이징</th>
+          <th>세그멘테이션</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>나누는 기준</td>
+          <td>고정 크기</td>
+          <td>의미 단위</td>
+      </tr>
+      <tr>
+          <td>조각 크기</td>
+          <td>모두 같음</td>
+          <td>서로 다를 수 있음</td>
+      </tr>
+      <tr>
+          <td>장점</td>
+          <td>외부 단편화 감소</td>
+          <td>프로그램 구조와 잘 맞음</td>
+      </tr>
+      <tr>
+          <td>단점</td>
+          <td>내부 단편화 가능</td>
+          <td>외부 단편화 가능</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="13-파일과-파일-시스템">13. 파일과 파일 시스템</h2>
+<p>파일은 컴퓨터에서 정보를 담는 논리적인 저장 단위다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>memo.txt
+</span></span><span style="display:flex;"><span>main.py
+</span></span><span style="display:flex;"><span>image.png
+</span></span><span style="display:flex;"><span>data.csv
+</span></span></code></pre></div><p>파일은 내용뿐만 아니라 메타데이터도 가진다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>파일 이름
+</span></span><span style="display:flex;"><span>유형
+</span></span><span style="display:flex;"><span>저장 위치
+</span></span><span style="display:flex;"><span>파일 크기
+</span></span><span style="display:flex;"><span>권한
+</span></span><span style="display:flex;"><span>생성 시간
+</span></span><span style="display:flex;"><span>수정 시간
+</span></span></code></pre></div><p>파일 시스템은 파일을 저장하고 검색하고 관리하기 위한 체계다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>파일 시스템
+</span></span><span style="display:flex;"><span>= 파일을 쉽게 접근할 수 있도록 관리하는 체제
+</span></span></code></pre></div><hr>
+<h2 id="14-디스크-할당">14. 디스크 할당</h2>
+<p>파일 시스템에서는 파일을 디스크 어디에 저장할지 결정해야 한다.</p>
+<p>대표적인 파일 할당 방식은 다음과 같다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1. 연속 할당
+</span></span><span style="display:flex;"><span>2. 연결 할당
+</span></span><span style="display:flex;"><span>3. FAT 방식
+</span></span><span style="display:flex;"><span>4. 색인 할당
+</span></span></code></pre></div><h3 id="연속-할당-1">연속 할당</h3>
+<p>파일을 연속된 블록에 저장한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[ A ][ A ][ A ][ A ][ ][ ][ ]
+</span></span></code></pre></div><p>장점은 빠르다는 점이다.
+단점은 외부 단편화가 생길 수 있고, 파일이 커질 때 대응하기 어렵다는 점이다.</p>
+<h3 id="연결-할당">연결 할당</h3>
+<p>파일의 각 블록이 다음 블록의 위치를 가리키도록 저장한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>16 → 9 → 12 → 31
+</span></span></code></pre></div><p>장점은 연속된 공간이 없어도 저장할 수 있다는 점이다.
+단점은 직접 접근이 어렵고, 중간 연결이 손상되면 이후 데이터를 읽기 어렵다는 점이다.</p>
+<h3 id="fat-방식">FAT 방식</h3>
+<p>FAT는 File Allocation Table의 약자다.
+연결 정보를 별도의 표에 저장한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>블록 16 → 다음 9
+</span></span><span style="display:flex;"><span>블록 9  → 다음 12
+</span></span><span style="display:flex;"><span>블록 12 → 다음 31
+</span></span><span style="display:flex;"><span>블록 31 → 끝
+</span></span></code></pre></div><h3 id="색인-할당">색인 할당</h3>
+<p>파일마다 인덱스 블록을 두고, 그 안에 파일이 사용하는 블록 번호를 저장한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>파일 A의 인덱스 블록
+</span></span><span style="display:flex;"><span>[16, 9, 12, 31]
+</span></span></code></pre></div><hr>
+<h2 id="15-inode와-링크">15. inode와 링크</h2>
+<p>inode는 파일의 실제 정보를 담는 구조다.</p>
+<p>inode에는 다음 정보가 들어간다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>파일 유형
+</span></span><span style="display:flex;"><span>파일 접근 권한
+</span></span><span style="display:flex;"><span>파일 시간 정보
+</span></span><span style="display:flex;"><span>파일이 저장된 블록 위치
+</span></span></code></pre></div><p>파일명은 실제 데이터 자체가 아니라 inode를 가리키는 이름이라고 볼 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>memo.txt → inode 100 → 실제 데이터
+</span></span></code></pre></div><h3 id="하드-링크">하드 링크</h3>
+<p>하드 링크는 같은 inode를 가리키는 또 다른 파일명이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>original.txt ─┐
+</span></span><span style="display:flex;"><span>              ├→ inode 100 → 실제 데이터
+</span></span><span style="display:flex;"><span>hard.txt     ─┘
+</span></span></code></pre></div><p>원본 파일명을 삭제해도 다른 하드 링크가 있으면 데이터는 남아 있다.</p>
+<h3 id="심볼릭-링크">심볼릭 링크</h3>
+<p>심볼릭 링크는 원본 파일의 경로를 가리키는 바로가기다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>soft.txt → original.txt → inode 100 → 실제 데이터
+</span></span></code></pre></div><p>원본이 삭제되면 심볼릭 링크는 깨진다.</p>
+<hr>
+<h2 id="16-마운트">16. 마운트</h2>
+<p>마운트는 저장장치나 파일 시스템을 리눅스의 특정 디렉터리에 연결하는 작업이다.</p>
+<p>리눅스는 Windows처럼 <code>C:\</code>, <code>D:\</code> 드라이브가 따로 보이는 구조가 아니다.
+모든 것은 <code>/</code> 아래의 트리 구조에 붙는다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>USB 저장장치 → /mnt/usb
+</span></span></code></pre></div><p>마운트하면 사용자는 <code>/mnt/usb</code> 디렉터리로 들어가 USB 내용을 볼 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /mnt/usb
+</span></span><span style="display:flex;"><span>ls
+</span></span></code></pre></div><hr>
+<h2 id="17-리눅스란">17. 리눅스란?</h2>
+<p>리눅스는 리누스 토발즈가 만든 오픈소스 운영체제다.
+서버, 클라우드, 컨테이너, 개발환경에서 많이 사용된다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>웹 서버
+</span></span><span style="display:flex;"><span>DB 서버
+</span></span><span style="display:flex;"><span>Docker 컨테이너
+</span></span><span style="display:flex;"><span>클라우드 서버
+</span></span><span style="display:flex;"><span>AI/데이터 분석 서버
+</span></span><span style="display:flex;"><span>임베디드 장비
+</span></span></code></pre></div><h3 id="리눅스-구조">리눅스 구조</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>응용 프로그램
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>Shell
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>Kernel
+</span></span><span style="display:flex;"><span>   ↓
+</span></span><span style="display:flex;"><span>하드웨어
+</span></span></code></pre></div><h3 id="리눅스의-특징">리눅스의 특징</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>유닉스 기반
+</span></span><span style="display:flex;"><span>멀티 유저 지원
+</span></span><span style="display:flex;"><span>멀티 태스킹 지원
+</span></span><span style="display:flex;"><span>CLI와 GUI 모두 지원
+</span></span><span style="display:flex;"><span>강력한 네트워킹 기능
+</span></span></code></pre></div><hr>
+<h2 id="18-리눅스-기본-명령어">18. 리눅스 기본 명령어</h2>
+<h3 id="현재-위치-확인">현재 위치 확인</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pwd
+</span></span></code></pre></div><h3 id="파일-목록-보기">파일 목록 보기</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls
+</span></span><span style="display:flex;"><span>ls -l
+</span></span><span style="display:flex;"><span>ls -al
+</span></span></code></pre></div><h3 id="디렉터리-이동">디렉터리 이동</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd 폴더명
+</span></span><span style="display:flex;"><span>cd ..
+</span></span><span style="display:flex;"><span>cd ~
+</span></span><span style="display:flex;"><span>cd /
+</span></span></code></pre></div><h3 id="디렉터리-만들기">디렉터리 만들기</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir test
+</span></span><span style="display:flex;"><span>mkdir -p project/src/components
+</span></span></code></pre></div><h3 id="파일-만들기">파일 만들기</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>touch memo.txt
+</span></span></code></pre></div><h3 id="파일-내용-보기">파일 내용 보기</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat memo.txt
+</span></span></code></pre></div><h3 id="파일-복사">파일 복사</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp memo.txt backup.txt
+</span></span></code></pre></div><h3 id="파일-이동-또는-이름-변경">파일 이동 또는 이름 변경</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mv memo.txt note.txt
+</span></span></code></pre></div><h3 id="파일-삭제">파일 삭제</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rm memo.txt
+</span></span></code></pre></div><h3 id="디렉터리-삭제">디렉터리 삭제</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>rmdir test
+</span></span><span style="display:flex;"><span>rm -r test
+</span></span><span style="display:flex;"><span>rm -rf test
+</span></span></code></pre></div><p><code>rm -rf</code>는 확인 없이 강제로 삭제하기 때문에 조심해야 한다.</p>
+<hr>
+<h2 id="19-리눅스-파일-권한">19. 리눅스 파일 권한</h2>
+<p>리눅스에서는 파일마다 소유자와 권한이 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls -al
+</span></span></code></pre></div><p>예시:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>-rw-r--r-- 1 user user 1234 May 28 10:30 memo.txt
+</span></span></code></pre></div><p>권한 부분은 다음처럼 나눌 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>-   rw-   r--   r--
+</span></span><span style="display:flex;"><span>│    │     │     │
+</span></span><span style="display:flex;"><span>│    │     │     └─ others 권한
+</span></span><span style="display:flex;"><span>│    │     └─────── group 권한
+</span></span><span style="display:flex;"><span>│    └───────────── owner 권한
+</span></span><span style="display:flex;"><span>└────────────────── 파일 종류
+</span></span></code></pre></div><p>권한의 종류는 다음과 같다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>r = read = 읽기
+</span></span><span style="display:flex;"><span>w = write = 쓰기
+</span></span><span style="display:flex;"><span>x = execute = 실행
+</span></span></code></pre></div><p>권한 변경은 <code>chmod</code>를 사용한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod <span style="color:#ae81ff">644</span> memo.txt
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">755</span> script.sh
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">700</span> private_dir
+</span></span></code></pre></div><p>숫자 권한은 다음 값을 더해서 만든다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>r = 4
+</span></span><span style="display:flex;"><span>w = 2
+</span></span><span style="display:flex;"><span>x = 1
+</span></span></code></pre></div><p>자주 쓰는 권한은 다음과 같다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>644 = 일반 파일
+</span></span><span style="display:flex;"><span>755 = 실행 파일 또는 일반 디렉터리
+</span></span><span style="display:flex;"><span>600 = 개인 비밀 파일
+</span></span><span style="display:flex;"><span>700 = 개인 디렉터리
+</span></span><span style="display:flex;"><span>777 = 모두 허용, 보안상 주의
+</span></span></code></pre></div><hr>
+<h2 id="20-정규표현식">20. 정규표현식</h2>
+<p>정규표현식은 특정한 규칙을 가진 문자열 패턴을 표현하는 방식이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>일반 검색 = 특정 단어 찾기
+</span></span><span style="display:flex;"><span>정규표현식 검색 = 특정 규칙을 만족하는 문자열 찾기
+</span></span></code></pre></div><p>자주 쓰는 메타 문자는 다음과 같다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>표현</th>
+          <th>의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>^</code></td>
+          <td>문자열의 시작</td>
+      </tr>
+      <tr>
+          <td><code>$</code></td>
+          <td>문자열의 끝</td>
+      </tr>
+      <tr>
+          <td><code>.</code></td>
+          <td>아무 문자 하나</td>
+      </tr>
+      <tr>
+          <td><code>\d</code></td>
+          <td>숫자</td>
+      </tr>
+      <tr>
+          <td><code>\D</code></td>
+          <td>숫자가 아닌 것</td>
+      </tr>
+      <tr>
+          <td><code>\w</code></td>
+          <td>알파벳, 숫자, 언더스코어</td>
+      </tr>
+      <tr>
+          <td><code>\W</code></td>
+          <td><code>\w</code>가 아닌 것</td>
+      </tr>
+      <tr>
+          <td><code>\s</code></td>
+          <td>공백 문자</td>
+      </tr>
+      <tr>
+          <td><code>\S</code></td>
+          <td>공백이 아닌 문자</td>
+      </tr>
+  </tbody>
+</table>
+<p>수량자는 다음과 같다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>표현</th>
+          <th>의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>?</code></td>
+          <td>0개 또는 1개</td>
+      </tr>
+      <tr>
+          <td><code>*</code></td>
+          <td>0개 이상</td>
+      </tr>
+      <tr>
+          <td><code>+</code></td>
+          <td>1개 이상</td>
+      </tr>
+      <tr>
+          <td><code>{n}</code></td>
+          <td>n개</td>
+      </tr>
+      <tr>
+          <td><code>{n,m}</code></td>
+          <td>n개 이상 m개 이하</td>
+      </tr>
+      <tr>
+          <td><code>{n,}</code></td>
+          <td>n개 이상</td>
+      </tr>
+  </tbody>
+</table>
+<p>예시:</p>
+<pre tabindex="0"><code class="language-regex" data-lang="regex">^010(\D?\d{4}){2}
+</code></pre><p>의미:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>010으로 시작
+</span></span><span style="display:flex;"><span>구분문자가 있을 수도 있고 없을 수도 있음
+</span></span><span style="display:flex;"><span>숫자 4개 패턴이 2번 반복
+</span></span></code></pre></div><hr>
+<h2 id="21-grep">21. grep</h2>
+<p><code>grep</code>은 파일 안에서 특정 패턴이나 문자열을 찾는 명령어다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep <span style="color:#f92672">[</span>option<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>pattern<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>파일명<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>예:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep error app.log
+</span></span></code></pre></div><p>주요 옵션은 다음과 같다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>옵션</th>
+          <th>의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>-i</code></td>
+          <td>대소문자 구분 없이 검색</td>
+      </tr>
+      <tr>
+          <td><code>-v</code></td>
+          <td>패턴과 일치하지 않는 행 출력</td>
+      </tr>
+      <tr>
+          <td><code>-c</code></td>
+          <td>패턴과 일치하는 행 개수 출력</td>
+      </tr>
+      <tr>
+          <td><code>-w</code></td>
+          <td>단어 단위로 매칭</td>
+      </tr>
+  </tbody>
+</table>
+<p>예시:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep -i error app.log
+</span></span><span style="display:flex;"><span>grep -v <span style="color:#e6db74">&#34;^#&#34;</span> config.conf
+</span></span><span style="display:flex;"><span>grep -c elice hello.txt
+</span></span><span style="display:flex;"><span>grep <span style="color:#e6db74">&#34;[0-9]&#34;</span> hello.txt
+</span></span></code></pre></div><hr>
+<h2 id="22-리다이렉션">22. 리다이렉션</h2>
+<p>리다이렉션은 표준 입력, 표준 출력, 표준 오류의 흐름을 바꾸는 기능이다.</p>
+<p>표준 스트림은 다음 세 가지다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>이름</th>
+          <th>의미</th>
+          <th>번호</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>stdin</td>
+          <td>표준 입력</td>
+          <td>0</td>
+      </tr>
+      <tr>
+          <td>stdout</td>
+          <td>표준 출력</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>stderr</td>
+          <td>표준 오류</td>
+          <td>2</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="출력-리다이렉션">출력 리다이렉션</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls &gt; result.txt
+</span></span></code></pre></div><p><code>ls</code> 결과를 화면에 출력하지 않고 <code>result.txt</code>에 저장한다.
+기존 내용은 덮어쓴다.</p>
+<h3 id="이어쓰기">이어쓰기</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls &gt;&gt; result.txt
+</span></span></code></pre></div><p>기존 파일 내용 뒤에 이어 쓴다.</p>
+<h3 id="입력-리다이렉션">입력 리다이렉션</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat &lt; hello.txt
+</span></span></code></pre></div><p>파일 내용을 명령어의 입력으로 사용한다.</p>
+<h3 id="오류-리다이렉션">오류 리다이렉션</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls 없는파일 2&gt; error.txt
+</span></span></code></pre></div><p>오류 메시지를 <code>error.txt</code>에 저장한다.</p>
+<hr>
+<h2 id="23-파이프">23. 파이프</h2>
+<p>파이프는 앞 명령어의 출력을 뒤 명령어의 입력으로 전달하는 기능이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>명령어1 | 명령어2
+</span></span></code></pre></div><p>예:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>head a.txt | grep <span style="color:#f92672">[</span>0-9<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>흐름은 다음과 같다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>1. a.txt의 첫 10줄을 출력
+</span></span><span style="display:flex;"><span>2. 그 결과를 grep에 전달
+</span></span><span style="display:flex;"><span>3. 숫자가 포함된 행만 출력
+</span></span></code></pre></div><p>자주 쓰는 예시는 다음과 같다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls | grep <span style="color:#e6db74">&#34;.txt&#34;</span>
+</span></span><span style="display:flex;"><span>ps -ef | grep python
+</span></span><span style="display:flex;"><span>cat app.log | grep error
+</span></span></code></pre></div><hr>
+<h2 id="24-프로세스-명령어">24. 프로세스 명령어</h2>
+<h3 id="ps">ps</h3>
+<p><code>ps</code>는 현재 실행 중인 프로세스 목록을 보는 명령어다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps
+</span></span><span style="display:flex;"><span>ps -ef
+</span></span><span style="display:flex;"><span>ps -aux
+</span></span></code></pre></div><p>주요 옵션은 다음과 같다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>옵션</th>
+          <th>의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>-e</code></td>
+          <td>현재 실행 중인 모든 프로세스 출력</td>
+      </tr>
+      <tr>
+          <td><code>-f</code></td>
+          <td>자세한 정보 출력</td>
+      </tr>
+      <tr>
+          <td><code>-a</code></td>
+          <td>전체 사용자의 프로세스 출력</td>
+      </tr>
+      <tr>
+          <td><code>-u</code></td>
+          <td>사용자와 시작 시간 등 출력</td>
+      </tr>
+      <tr>
+          <td><code>-x</code></td>
+          <td>터미널 제어 없이 실행 중인 프로세스 출력</td>
+      </tr>
+  </tbody>
+</table>
+<p>특정 프로세스를 찾을 때는 <code>grep</code>과 같이 쓴다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps -ef | grep python
+</span></span><span style="display:flex;"><span>ps -aux | grep mysql
+</span></span></code></pre></div><h3 id="kill">kill</h3>
+<p><code>kill</code>은 프로세스에 시그널을 보내는 명령어다.
+보통 프로세스를 종료할 때 사용한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kill PID
+</span></span><span style="display:flex;"><span>kill -9 PID
+</span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>명령</th>
+          <th>의미</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>kill PID</code></td>
+          <td>정상 종료 요청</td>
+      </tr>
+      <tr>
+          <td><code>kill -9 PID</code></td>
+          <td>강제 종료</td>
+      </tr>
+  </tbody>
+</table>
+<p>처음부터 <code>kill -9</code>를 쓰기보다는 일반 종료 요청 후, 종료되지 않을 때 강제 종료를 쓰는 것이 좋다.</p>
+<hr>
+<h2 id="25-job">25. job</h2>
+<p>job은 현재 터미널 세션에서 실행한 작업 단위다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>프로세스 = 운영체제 전체에서 실행 중인 프로그램
+</span></span><span style="display:flex;"><span>job = 현재 터미널에서 관리하는 작업
+</span></span></code></pre></div><h3 id="foreground">Foreground</h3>
+<p>터미널 앞에서 실행되는 작업이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python server.py
+</span></span></code></pre></div><p>이 경우 터미널이 해당 프로그램에 붙잡힌다.</p>
+<h3 id="background">Background</h3>
+<p>명령어 뒤에 <code>&amp;</code>를 붙이면 백그라운드에서 실행된다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python server.py &amp;
+</span></span><span style="display:flex;"><span>sleep <span style="color:#ae81ff">100</span> &amp;
+</span></span></code></pre></div><p>현재 터미널의 job 목록은 다음 명령어로 확인한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jobs
+</span></span></code></pre></div><p>job을 종료할 때는 다음처럼 할 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kill %1
+</span></span></code></pre></div><hr>
+<h2 id="26-at과-cron">26. at과 cron</h2>
+<p><code>at</code>과 <code>cron</code>은 자동 작업 예약과 관련된 명령어다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>at = 한 번만 실행할 작업 예약
+</span></span><span style="display:flex;"><span>cron = 반복 실행할 작업 예약
+</span></span></code></pre></div><h3 id="at">at</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>at now + <span style="color:#ae81ff">1</span> minutes
+</span></span></code></pre></div><p>입력 후 실행할 명령어를 작성하고 <code>Ctrl + D</code>로 종료한다.</p>
+<p>작업 목록 확인:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>atq
+</span></span></code></pre></div><p>예약 작업 삭제:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>atrm 작업번호
+</span></span></code></pre></div><h3 id="cron">cron</h3>
+<p><code>cron</code>은 반복 작업을 예약할 때 쓴다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>crontab -e
+</span></span></code></pre></div><p>현재 등록된 cron 확인:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>crontab -l
+</span></span></code></pre></div><p>cron 형식은 다음과 같다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>분 시 일 월 요일 명령어
+</span></span></code></pre></div><p>예시:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">3</span> * * * /home/user/backup.sh
+</span></span></code></pre></div><p>의미:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>매일 새벽 3시에 backup.sh 실행
+</span></span></code></pre></div><p>5분마다 실행:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>*/5 * * * * /home/user/check.sh
+</span></span></code></pre></div><hr>
+<h2 id="27-ssh">27. SSH</h2>
+<p>SSH는 Secure Shell의 약자다.
+네트워크를 통해 원격 서버에 안전하게 접속하는 방법이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh 사용자명@서버주소
+</span></span></code></pre></div><p>예:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh ubuntu@192.168.0.10
+</span></span></code></pre></div><p>포트를 지정할 수도 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -p <span style="color:#ae81ff">22</span> ubuntu@192.168.0.10
+</span></span></code></pre></div><p>기본 SSH 포트는 보통 22번이다.</p>
+<p>SSH는 접속하는 쪽과 접속을 받아주는 쪽이 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>SSH Client = 접속을 시도하는 내 컴퓨터
+</span></span><span style="display:flex;"><span>SSH Server = 접속을 받아주는 원격 서버
+</span></span></code></pre></div><p>Ubuntu에서 SSH 서버를 설치하려면 다음처럼 할 수 있다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install openssh-server
+</span></span><span style="display:flex;"><span>sudo systemctl start ssh
+</span></span><span style="display:flex;"><span>sudo systemctl status ssh
+</span></span></code></pre></div><p>SSH 포트 확인 예시:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ss -tulnp | grep ssh
+</span></span></code></pre></div><hr>
+<h2 id="28-전체-흐름-정리">28. 전체 흐름 정리</h2>
+<p>이번 수업 전체 흐름은 다음처럼 이어진다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>운영체제
+</span></span><span style="display:flex;"><span>= 컴퓨터 자원을 관리하는 핵심 소프트웨어
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>프로세스
+</span></span><span style="display:flex;"><span>= 실행 중인 프로그램
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>메모리
+</span></span><span style="display:flex;"><span>= 프로그램이 실행되기 위해 필요한 공간
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>파일 시스템
+</span></span><span style="display:flex;"><span>= 파일을 저장하고 검색하고 관리하는 체계
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>리눅스
+</span></span><span style="display:flex;"><span>= 서버와 개발환경에서 많이 쓰이는 오픈소스 운영체제
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CLI
+</span></span><span style="display:flex;"><span>= 명령어 기반으로 리눅스를 조작하는 환경
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>정규표현식과 grep
+</span></span><span style="display:flex;"><span>= 문자열을 패턴으로 검색하는 방법
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>리다이렉션과 파이프
+</span></span><span style="display:flex;"><span>= 명령어의 입력과 출력을 연결하고 조합하는 방법
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ps, kill, jobs
+</span></span><span style="display:flex;"><span>= 실행 중인 프로세스와 작업을 관리하는 방법
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>at, cron
+</span></span><span style="display:flex;"><span>= 작업을 자동으로 실행하는 방법
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SSH
+</span></span><span style="display:flex;"><span>= 원격 리눅스 서버에 접속하는 방법
+</span></span></code></pre></div><hr>
+<h2 id="마무리">마무리</h2>
+<p>운영체제와 리눅스를 공부할 때 중요한 것은 단순히 명령어를 외우는 것이 아니라, 명령어가 운영체제의 어떤 기능과 연결되는지 이해하는 것이다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ps, kill
+</span></span><span style="display:flex;"><span>→ 프로세스 관리
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chmod, chown
+</span></span><span style="display:flex;"><span>→ 권한 관리
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir, touch, rm
+</span></span><span style="display:flex;"><span>→ 파일 시스템 관리
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>grep, pipe, redirection
+</span></span><span style="display:flex;"><span>→ CLI 기반 데이터 처리
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cron, at
+</span></span><span style="display:flex;"><span>→ 작업 스케줄링
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ssh
+</span></span><span style="display:flex;"><span>→ 네트워크와 원격 서버 관리
+</span></span></code></pre></div><p>리눅스는 처음에는 명령어가 많아 보여서 어렵지만, 결국 핵심은 다음 문장으로 정리할 수 있다.</p>
+<blockquote>
+<p>리눅스는 파일, 프로세스, 메모리, 네트워크를 명령어로 직접 다루는 운영체제 환경이다.</p>
+</blockquote>
+<ul class="pa0">
+  
+   <li class="list di">
+     <a href="/tags/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">운영체제</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/%EB%A6%AC%EB%88%85%EC%8A%A4/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">리눅스</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">프로세스</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/%EB%A9%94%EB%AA%A8%EB%A6%AC/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">메모리</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/%ED%8C%8C%EC%9D%BC%EC%8B%9C%EC%8A%A4%ED%85%9C/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">파일시스템</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">정규표현식</a>
+   </li>
+  
+   <li class="list di">
+     <a href="/tags/cli/" class="link f5 grow br-pill ba ph3 pv2 mb2 dib black sans-serif no-underline">CLI</a>
+   </li>
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://nforestcat.github.io/" >
+    &copy;  nforest notes 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
+
+
+
