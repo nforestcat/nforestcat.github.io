@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>파이썬 코딩, 당신이 몰랐던 의외의 순간들: 입문자를 위한 5가지 핵심 인사이트 | nforest notes</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="프로그래밍의 세계에 첫발을 내디디면 모든 것이 신기하면서도 생소하게 느껴지기 마련입니다. 분명히 컴퓨터에게 정답을 요구했는데, 때로는 예상과 전혀 다른 결과가 나와 당황스러운 순간도 있죠. 예를 들어, 100과 300을 더하라고 시켰는데 결과가 400이 아닌 &lsquo;100300&rsquo;으로 출력된다면 어떨까요? 파이썬의 기초를 탄탄히 다지기 위해 꼭 알아야 할, 하지만 놓치기 쉬운 5가지 핵심 인사이트를 시니어의 시선으로 정리해 드립니다.
+하나, 숫자를 입력해도 &lsquo;글자&rsquo;가 되는 이유: input()의 비밀
+컴퓨터와 대화하는 첫 번째 관문인 input() 함수에는 아주 중요한 특징이 있습니다. 사용자가 터미널에 숫자 100을 입력하더라도, 파이썬은 이를 숫자형(Number)이 아닌 문자열(String)로 처리한다는 점입니다.">
+    <meta name="generator" content="Hugo 0.161.1">
+    
+    
+    
+      <meta name="robots" content="index, follow">
+    
+    
+
+    <link rel="stylesheet" href="/ananke/css/main.fe543ec729f225f1a33caed07775c832a416476900d82ba51765d6ead9de6758.css" integrity="sha256-/lQ&#43;xynyJfGjPK7Qd3XIMqQWR2kA2CulF2XW6tneZ1g=" crossorigin="anonymous">
+    
+
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="https://nforestcat.github.io/posts/4th_day/">
+    
+
+    
+    
+    <meta property="og:url" content="https://nforestcat.github.io/posts/4th_day/">
+  <meta property="og:site_name" content="nforest notes">
+  <meta property="og:title" content="파이썬 코딩, 당신이 몰랐던 의외의 순간들: 입문자를 위한 5가지 핵심 인사이트">
+  <meta property="og:description" content="프로그래밍의 세계에 첫발을 내디디면 모든 것이 신기하면서도 생소하게 느껴지기 마련입니다. 분명히 컴퓨터에게 정답을 요구했는데, 때로는 예상과 전혀 다른 결과가 나와 당황스러운 순간도 있죠. 예를 들어, 100과 300을 더하라고 시켰는데 결과가 400이 아닌 ‘100300’으로 출력된다면 어떨까요? 파이썬의 기초를 탄탄히 다지기 위해 꼭 알아야 할, 하지만 놓치기 쉬운 5가지 핵심 인사이트를 시니어의 시선으로 정리해 드립니다.
+하나, 숫자를 입력해도 ‘글자’가 되는 이유: input()의 비밀
+컴퓨터와 대화하는 첫 번째 관문인 input() 함수에는 아주 중요한 특징이 있습니다. 사용자가 터미널에 숫자 100을 입력하더라도, 파이썬은 이를 숫자형(Number)이 아닌 문자열(String)로 처리한다는 점입니다.">
+  <meta property="og:locale" content="ko_kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-05-29T11:05:08+09:00">
+    <meta property="article:modified_time" content="2026-05-29T11:05:08+09:00">
+
+  <meta itemprop="name" content="파이썬 코딩, 당신이 몰랐던 의외의 순간들: 입문자를 위한 5가지 핵심 인사이트">
+  <meta itemprop="description" content="프로그래밍의 세계에 첫발을 내디디면 모든 것이 신기하면서도 생소하게 느껴지기 마련입니다. 분명히 컴퓨터에게 정답을 요구했는데, 때로는 예상과 전혀 다른 결과가 나와 당황스러운 순간도 있죠. 예를 들어, 100과 300을 더하라고 시켰는데 결과가 400이 아닌 ‘100300’으로 출력된다면 어떨까요? 파이썬의 기초를 탄탄히 다지기 위해 꼭 알아야 할, 하지만 놓치기 쉬운 5가지 핵심 인사이트를 시니어의 시선으로 정리해 드립니다.
+하나, 숫자를 입력해도 ‘글자’가 되는 이유: input()의 비밀
+컴퓨터와 대화하는 첫 번째 관문인 input() 함수에는 아주 중요한 특징이 있습니다. 사용자가 터미널에 숫자 100을 입력하더라도, 파이썬은 이를 숫자형(Number)이 아닌 문자열(String)로 처리한다는 점입니다.">
+  <meta itemprop="datePublished" content="2026-05-29T11:05:08+09:00">
+  <meta itemprop="dateModified" content="2026-05-29T11:05:08+09:00">
+  <meta itemprop="wordCount" content="605">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="파이썬 코딩, 당신이 몰랐던 의외의 순간들: 입문자를 위한 5가지 핵심 인사이트">
+  <meta name="twitter:description" content="프로그래밍의 세계에 첫발을 내디디면 모든 것이 신기하면서도 생소하게 느껴지기 마련입니다. 분명히 컴퓨터에게 정답을 요구했는데, 때로는 예상과 전혀 다른 결과가 나와 당황스러운 순간도 있죠. 예를 들어, 100과 300을 더하라고 시켰는데 결과가 400이 아닌 ‘100300’으로 출력된다면 어떨까요? 파이썬의 기초를 탄탄히 다지기 위해 꼭 알아야 할, 하지만 놓치기 쉬운 5가지 핵심 인사이트를 시니어의 시선으로 정리해 드립니다.
+하나, 숫자를 입력해도 ‘글자’가 되는 이유: input()의 비밀
+컴퓨터와 대화하는 첫 번째 관문인 input() 함수에는 아주 중요한 특징이 있습니다. 사용자가 터미널에 숫자 100을 입력하더라도, 파이썬은 이를 숫자형(Number)이 아닌 문자열(String)로 처리한다는 점입니다.">
+
+      
+      
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-M6TD8WH419"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-M6TD8WH419');
+        }
+      </script>
+    
+	
+<meta name="google-site-verification" content="EnNrdGCymJgu0LSduhvl5q6dq5ceCPWxt6b_m-kkU1A" />
+
+  </head><body class="ma0 avenir bg-near-white production is-page is-page page-4th_day">
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l center items-center justify-between">
+    <a href="/" class="f3 fw2 hover-white white-90 dib no-underline">
+      
+        nforest notes
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+
+  <article class="page-4th_day flex-l mw7 center ph3 flex-wrap justify-between">
+    <header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">
+    Posts
+</aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">파이썬 코딩, 당신이 몰랐던 의외의 순간들: 입문자를 위한 5가지 핵심 인사이트</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2026-05-29T11:05:08+09:00">5월 29, 2026</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-100-l"><p>프로그래밍의 세계에 첫발을 내디디면 모든 것이 신기하면서도 생소하게 느껴지기 마련입니다. 분명히 컴퓨터에게 정답을 요구했는데, 때로는 예상과 전혀 다른 결과가 나와 당황스러운 순간도 있죠. 예를 들어, 100과 300을 더하라고 시켰는데 결과가 400이 아닌 &lsquo;100300&rsquo;으로 출력된다면 어떨까요? 파이썬의 기초를 탄탄히 다지기 위해 꼭 알아야 할, 하지만 놓치기 쉬운 5가지 핵심 인사이트를 시니어의 시선으로 정리해 드립니다.</p>
+<p>하나, 숫자를 입력해도 &lsquo;글자&rsquo;가 되는 이유: input()의 비밀</p>
+<p>컴퓨터와 대화하는 첫 번째 관문인 input() 함수에는 아주 중요한 특징이 있습니다. 사용자가 터미널에 숫자 100을 입력하더라도, 파이썬은 이를 숫자형(Number)이 아닌 문자열(String)로 처리한다는 점입니다.</p>
+<p>왜 파이썬은 굳이 이렇게 설계되었을까요? 문자열은 가장 &lsquo;보편적인&rsquo; 자료형이기 때문입니다. 모든 입력값은 문자로 표현될 수 있지만, 모든 문자가 숫자가 될 수는 없습니다. 그래서 파이썬은 안전하게 모든 입력을 일단 문자열로 받습니다. 만약 var1 = input()과 var2 = input()에 각각 100과 300을 넣고 더했다면, 산술 연산이 아닌 &lsquo;문자열 이어 붙이기&rsquo;가 일어나 &lsquo;100300&rsquo;이라는 결과가 나옵니다. 산술 계산이 필요하다면 int()와 같은 형변환(Type Conversion) 과정이 필수입니다.</p>
+<p>&ldquo;무엇을 입력하든 문자열로 입력받아짐. input()의 중요한 특징&rdquo;</p>
+<p>둘, 리스트와 문자열은 생각보다 닮았다: 시퀀스 자료형의 마법</p>
+<p>파이썬에서 문자열과 리스트는 겉보기에 달라 보이지만, 내부적으로는 &lsquo;순서가 있는 자료&rsquo;인 &lsquo;시퀀스 자료형&rsquo;이라는 큰 카테고리에 묶여 있습니다. 이러한 일관성 덕분에 우리는 하나의 논리로 두 가지 자료형을 모두 다룰 수 있습니다.</p>
+<p>특히 다음의 연산자와 기능들은 문자열과 리스트 모두에 공통적으로 적용됩니다.</p>
+<p>    + 연산자: 두 시퀀스를 하나로 이어 붙입니다.</p>
+<p>    * 연산자: 시퀀스를 정수 배만큼 반복합니다.</p>
+<p>    in 연산자: 특정 원소가 시퀀스 안에 존재하는지 확인하여 True/False를 반환합니다.</p>
+<p>    len() 함수: 시퀀스의 전체 길이를 즉시 확인합니다.</p>
+<p>Senior Tip: 시퀀스라는 공통점이 있다고 해서 모든 기능이 같지는 않습니다. 예를 들어 리스트에는 append()로 원소를 추가할 수 있지만, 문자열은 구조상 append()를 사용할 수 없습니다. &lsquo;범주&rsquo;는 같아도 &lsquo;정체성&rsquo;은 다르다는 점을 기억하세요.</p>
+<p>셋, &lsquo;슬라이싱&rsquo;의 마지막 숫자를 믿지 마세요</p>
+<p>자료의 일부분을 추출하는 &lsquo;슬라이싱&rsquo;을 할 때, 입문자들이 가장 자주 겪는 시행착오가 바로 종료 인덱스의 범위입니다. 파이썬의 슬라이싱 규칙인 [시작:종료]에서 &lsquo;종료 인덱스&rsquo;는 결과에 포함되지 않습니다.</p>
+<p>beta = [2, 4, 6, 8, 10, 12, 14]라는 리스트가 있다고 가정해 봅시다.</p>
+<p>    실행 예시: print(beta[2:5])</p>
+<p>    결과: [6, 8, 10]</p>
+<p>인덱스 2번(값 6)부터 5번(값 12) 직전인 4번(값 10)까지만 가져온 것입니다. 이는 소위 &lsquo;오프 바이 원(Off-by-one)&lsquo;이라 불리는 에러의 원인이 되기도 하는데요, 시니어들은 이를 종료 인덱스 - 시작 인덱스 = 결과 리스트의 길이라는 공식으로 이해합니다. 위 예시에서도 5 - 2 = 3이므로 결과의 개수가 3개라는 것을 직관적으로 알 수 있죠.</p>
+<p>넷, 변수 이름에 &lsquo;한글&rsquo;을 써도 된다고?</p>
+<p>우리는 흔히 프로그래밍 변수는 영어로만 지어야 한다고 생각합니다. 하지만 파이썬은 매우 유연하여 파이썬 = &ldquo;Python&quot;처럼 한글 변수명을 사용하는 것이 실제로 가능합니다. 파이썬이 제안하는 명명 규칙은 크게 세 가지 케이스로 나뉩니다.</p>
+<p>    Case 1 (알파벳 권장): 업계 표준이자 가장 권장되는 방식입니다.</p>
+<p>    Case 2 (한글): 기술적으로 가능하지만 특수한 경우가 아니면 실무에서는 지양합니다.</p>
+<p>    Case 3 (알파벳, 언더바, 숫자 조합): 변수명의 가독성을 높일 때 사용합니다.</p>
+<p>물론 금기 사항도 있습니다. 숫자로 시작하는 이름(1name), 공백이나 연산자를 포함한 이름(prod name, prod+date), 그리고 파이썬이 이미 사용 중인 예약어(print) 등은 절대 변수 이름으로 쓸 수 없습니다.</p>
+<p>다섯, 조건문의 우선순위: 왜 순서가 중요할까?</p>
+<p>여러 조건을 검사하는 if-elif-else 문을 작성할 때는 논리적인 &lsquo;배치 순서&rsquo;가 핵심입니다. 파이썬은 위에서부터 순차적으로 조건을 검사하다가 하나라도 참(True)을 만나면 해당 코드를 실행하고 나머지는 검사조차 하지 않고 종료합니다. 이를 &lsquo;단락 회로(Short-circuit)&lsquo;적 특성이라고 합니다.</p>
+<p>예를 들어 성적 산출 로직을 짤 때 주의해야 합니다.</p>
+<p>if score &gt;= 75:</p>
+<p>    print(&ldquo;B&rdquo;)</p>
+<p>elif score &gt;= 90:</p>
+<p>    print(&ldquo;A&rdquo;)</p>
+<p>만약 점수가 95점인 학생이 있다면, 첫 번째 조건(score &gt;= 75)에서 이미 참이 되어 &ldquo;B&quot;가 출력되고 조건문이 종료됩니다. &lsquo;A&rsquo;를 받을 기회를 영영 잃게 되는 것이죠. 따라서 조건문은 항상 가장 구체적이거나 높은 기준을 위쪽에 배치하는 &lsquo;상호 배제적&rsquo;인 설계가 필요합니다.</p>
+<p>결론</p>
+<p>파이썬을 배운다는 것은 단순히 문법 기호를 암기하는 것이 아니라, 데이터를 다루는 &lsquo;논리&rsquo;를 습득하는 과정입니다. 프로그래머의 역할은 인간의 의도를 컴퓨터가 이해할 수 있는 자료형과 논리 구조로 정확하게 번역하는 데 있습니다. 오늘 살펴본 5가지 인사이트가 여러분의 코딩을 한결 명쾌하게 만들어 주길 바랍니다.</p>
+<p>여러분이 작성한 코드 중에서 가장 예상치 못한 결과를 냈던 순간은 언제인가요? 그 원인을 찾아냈을 때의 희열을 기억하며, 오늘도 즐거운 코딩 하시길 바랍니다.</p>
+<ul class="pa0">
+  
+</ul>
+
+      
+    </div></article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white white-70 dn dib-ns pv2 ph3 no-underline" href="https://nforestcat.github.io/" >
+    &copy;  nforest notes 2026 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>
+
+
+
